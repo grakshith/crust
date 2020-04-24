@@ -1,0 +1,408 @@
+# Notes on Rust
+
+## Variables in Rust
+
+* Variables are by default immutable.
+```rust
+let x = 6;
+x = 7;
+```
+The above gives an error.
+* `mut` makes variables mutable.
+```rust
+let mut x = 6;
+x = 7;
+```
+The above does not give an error.
+* `const` keyword is used to declare constant variables. The difference between `const` variable and immutable variable is that `const` variable values are determined at compile time whereas immutable variable values will have to be determined at runtime. The following results in an error
+```rust
+let x = 300;
+const X: u32 = x;     //error
+const X: u32 = 300;   // not an error
+```
+* **Shadowing** shadows variables. The following is allowed
+```rust
+let x = 6;
+let x = 7;
+```
+The above does not give an error. It is a like the old copy of `x` is discarded and a new copy of `x` is created. Even the following is allowed
+```rust
+let x = 7;
+let x = "hello";
+```
+But the following is not allowed because of type checking
+```rust
+let mut x = 7;
+x = "hello"; //error
+```
+
+## Data types
+### Scalar Types
+#### Integers
+Rust default integer value is `i32`. The rest of the types are
+
+|Length|Signed|Unsigned|
+|------|------|--------|
+|8-bit|`i8`|`u8`|
+|16-bit|`i16`|`u16`|
+|32-bit|`i32`|`u32`|
+|64-bit|`i64`|`u64`|
+|128-bit|`i128`|`u128`|
+|arch|`isize`|`usize`|
+
+#### Floating Points
+Two types `f32` and `f64`, where the **default** is `f64`.
+
+#### Boolean
+`bool` is the type with two values `true` or `false`
+
+#### Char
+`char` is the type. But Rust's char is `4 bytes` long.
+### Compound Types
+#### Tuple
+It is a collection of multiple primitive types. Values are extracted using **Pattern Matching**
+```rust
+let tup: (i32, f64, u8) = (500, 6.4, 1); //either declare the types
+let x = ('a', 20, "Hello");
+let (y, z, w) = tup; // pattern matching
+// or they can be extracted in the following way
+let first_value = x.0;
+let second_value = x.1;
+let third_value = x.2;
+```
+Rust checks for invalid access for index and also the rules of immutability and type checking apply here as well.
+```rust
+let x = (1, 2, 3);
+let r = x.3; //error
+x.0 = 5; // error because x is immutable
+let mut x = (1, 2, 3);
+x.0 = 6;
+x.0 = 'a'; //error because of the type
+```
+
+#### Array
+All elements have to be of the same type. They are not allowed to grow or shrink in size.
+```rust
+let a = [1, 2, 3];
+let a: [i32; 3] = [1, 2, 3, 4] //error since there are 4 elements
+```
+Same as tuples, Rust checks for Invalid index access and also checks for type safety at compile time.
+```rust
+let a = [1, 2, 3];
+let r = a[3]; //error
+```
+It is not required to declare the type of the variables as Rust can infer the data types from variables at compile time (ie statically).
+
+## Functions
+Functions are defined as
+```rust
+fn foo (x: u32) -> u32 {
+    let y = 2 + x;
+    return y;
+}
+```
+Unlike variables a function definition must explicitly mention the types of the parameters, so that they can be known at runtime. The type of the return value is mentioned after the arrow `->`.
+### Expressions
+Each line of code is a statement. Expression is a special type of statement which has return value. They usually end without a semi-colon.
+```rust
+let x = 9; // statement, does not return anything
+let x = (let y = 9); //error
+let x = {
+    let y = 9;
+    y+1     // expression, returns the value of y + 1
+}
+// similarly in a function
+fn foo (x: u32) -> (u32, char) {
+    let y = 2 * x;
+    (y, '*')    // expression returns a value, so no need to write return
+}
+```
+
+## Ownership
+* Each value in Rust has a variable that’s called its owner.
+* There can only be one owner at a time.
+* When the owner goes out of scope, the value will be dropped.
+
+All the above data types seen till now are stored in the **stack** and not on the **heap**.
+
+`String` data type stores the data on the heap and the required metadata on the stack. Rust uses **RAII**, so when a `String` type variable is initialised, all the required memory is allocated. When that variable goes out of scope, the `drop` function is called to release the acquired memory.       
+
+```rust
+    {
+        let s = String::from("hello"); // s is valid from this point forward
+
+        // do stuff with s
+    }                                  // this scope is now over, and s is no
+                                       // longer valid, call drop
+```
+![string under the hood](https://doc.rust-lang.org/book/img/trpl04-01.svg)
+Figure: String how it is implemented under the hood
+
+### Move
+```rust
+let s1 = String::from("hello"); // all resources to s1 allocated
+                                // s1 valid from this point onward
+let s2 = s1;
+```
+At line `let s2 = s1`, all the stack data of `s1` is copied to `s2` and `s2` points to the same memory. Instead of calling `drop` twice on the same memory when `s1` and `s2` go out of scope, Rust considers `s1` to be invalid and considers that the value of `s1` **Moved** to `s2`. Hence,
+```rust
+let s1 = String::from("hello"); // all resources to s1 allocated
+                                // s1 valid from this point onward
+let s2 = s1;
+println!("{}, world", s1); // error
+```
+**Move** is an example of shallow copy.
+
+![move example](https://doc.rust-lang.org/book/img/trpl04-04.svg)
+Figure: what move does internally
+
+### Clone
+`clone()` deep copies stuff, even the heap data.
+```rust
+let s1 = String::from("hello");
+let s2 = s1.clone();
+
+println!("s1 = {}, s2 = {}", s1, s2); // no error
+```
+![clone example](https://doc.rust-lang.org/book/img/trpl04-03.svg)
+Figure: this is what clone does internally
+
+### Copy
+Types that implement `Copy` trait allow use of the older variable (ie they do deep copy). Types that implement `Drop` trait cannot implement `Copy` trait.
+```rust
+let x = 8;
+let y = x;
+
+println!("x = {}, y = {}", x, y); // no error
+```
+Simple scalar types implement `Copy` trait.
+
+* All the integer types, such as `u32`.
+* The Boolean type, `bool`, with values `true` and `false`.
+* All the floating point types, such as `f64`.
+* The character type, `char`.
+* Tuples, if they only contain types that are also `Copy`. For example, `(i32, i32)` is `Copy`, but `(i32, String)` is not.
+
+### Functions
+```rust
+fn main() {
+    let s = String::from("hello");  // s comes into scope
+
+    takes_ownership(s);             // s's value moves into the function...
+                                    // ... and so is no longer valid here
+
+    let x = 5;                      // x comes into scope
+
+    makes_copy(x);                  // x would move into the function,
+                                    // but i32 is Copy, so it’s okay to still
+                                    // use x afterward
+
+} // Here, x goes out of scope, then s. But because s's value was moved, nothing
+  // special happens.
+
+fn takes_ownership(some_string: String) { // some_string comes into scope
+    println!("{}", some_string);
+} // Here, some_string goes out of scope and `drop` is called. The backing
+  // memory is freed.
+
+fn makes_copy(some_integer: i32) { // some_integer comes into scope
+    println!("{}", some_integer);
+} // Here, some_integer goes out of scope. Nothing special happens.
+```
+
+### Return values
+```rust
+fn main() {
+    let s1 = gives_ownership();         // gives_ownership moves its return
+                                        // value into s1
+
+    let s2 = String::from("hello");     // s2 comes into scope
+
+    let s3 = takes_and_gives_back(s2);  // s2 is moved into
+                                        // takes_and_gives_back, which also
+                                        // moves its return value into s3
+} // Here, s3 goes out of scope and is dropped. s2 goes out of scope but was
+  // moved, so nothing happens. s1 goes out of scope and is dropped.
+
+fn gives_ownership() -> String {             // gives_ownership will move its
+                                             // return value into the function
+                                             // that calls it
+
+    let some_string = String::from("hello"); // some_string comes into scope
+
+    some_string                              // some_string is returned and
+                                             // moves out to the calling
+                                             // function
+}
+
+// takes_and_gives_back will take a String and return one
+fn takes_and_gives_back(a_string: String) -> String { // a_string comes into
+                                                      // scope
+
+    a_string  // a_string is returned and moves out to the calling function
+}
+```
+
+## References and Borrowing
+If we pass a `String` to a function, it is borrowed. To avoid that you can pass a reference using the `&` operator.
+```rust
+fn main() {
+    let s1 = String::from("hello");
+
+    let len = calculate_length(&s1);
+
+    println!("The length of '{}' is {}.", s1, len);
+}
+
+fn calculate_length(s: &String) -> usize {
+    s.len()
+}
+```
+##### Reference under the hood:
+![reference example](https://doc.rust-lang.org/book/img/trpl04-05.svg)
+
+References are **immutable** by **default**. To change the values pass a mutable reference.
+
+```rust
+fn main() {
+    let mut s = String::from("hello");
+
+    change(&mut s);
+}
+
+fn change(some_string: &mut String) {
+    some_string.push_str(", world");
+}
+```
+Also there are some rules to avoid data races.
+
+```rust
+fn main() {
+    let mut s = String::from("hello");
+
+    let r1 = &mut s;        // a mutable reference to s
+    let r2 = &mut s;        // seoncd mutable reference to s
+// cannot have two mutable reference to the same variable at the same time
+
+    println!("{}, {}", r1, r2);
+}
+```
+
+The following will not result in an error.
+```rust
+fn main() {
+    let mut s = String::from("hello");
+
+    {
+        let r1 = &mut s;
+    } // r1 goes out of scope here, so we can make a new reference with no problems.
+
+    let r2 = &mut s;
+}
+```
+
+Can have mutiple immutable references at the same scope. But a combination of mutable and immutable cannot exist in the scope.
+```rust
+fn main() {
+    let mut s = String::from("hello");
+
+    let r1 = &s; // no problem
+    let r2 = &s; // no problem
+    let r3 = &mut s; // BIG PROBLEM
+
+    println!("{}, {}, and {}", r1, r2, r3);
+}
+```
+
+A reference's scope starts when it is introduced and continues through the last time that the refernce is used.
+```rust
+fn main() {
+    let mut s = String::from("hello");
+
+    let r1 = &s; // no problem
+    let r2 = &s; // no problem
+    println!("{} and {}", r1, r2);
+    // r1 and r2 are no longer used after this point
+
+    let r3 = &mut s; // no problem
+    println!("{}", r3);
+}
+```
+
+Impossible to create a dangling refernce too.
+```rust
+fn main() {
+    let reference_to_nothing = dangle();
+}
+
+fn dangle() -> &String { // dangle returns a reference to a String
+
+    let s = String::from("hello"); // s is a new String
+
+    &s // we return a reference to the String, s
+} // Here, s goes out of scope, and is dropped. Its memory goes away.
+  // Danger!
+```
+
+Final takeaway-
+
+* At any given time, you can have either one mutable reference or any number of immutable references.
+* References must always be valid.
+
+## The Slice Reference type
+### String Slice
+A string slice is a reference to part of a `String`, and it looks like this:
+```rust
+fn main() {
+    let s = String::from("hello world");
+
+    let hello = &s[0..5];
+    let world = &s[6..11];
+}
+```
+![string slice internally](https://doc.rust-lang.org/book/img/trpl04-06.svg)
+Figure: string slice internally
+
+The range operator `..` can be used as follows
+```rust
+let s = String::from("hello");
+
+let slice = &s[0..2];   // he
+let slice = &s[..2];    // he
+let slice = &s[2..];    // llo
+let slice = &s[1..4];   // ell
+```
+String slice's type is `&str` and they are immutable by default. Also, string literals are also a slice
+```rust
+fn first_word(s: &String) -> &str {
+    let bytes = s.as_bytes();
+
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &s[0..i];
+        }
+    }
+
+    &s[..]
+}
+
+fn main() {
+    let s = "hello";    // type of &str
+    let mut s = String::from("hello world");
+
+    let word = first_word(&s);      // word is immutable slice reference of s
+
+    s.clear(); // error!, as mutable and immutable refs cannot exist together
+
+    println!("the first word is: {}", word);
+}
+
+```
+
+### Other Slices
+```rust
+let a = [1, 2, 3, 4, 5];
+
+let slice = &a[1..3];   // type of slice: &[i32]
+```
+
