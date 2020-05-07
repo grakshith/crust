@@ -604,3 +604,224 @@ fn main() {
     println!("Can rect1 hold rect3? {}", rect1.can_hold(&rect3));
 }
 ```
+## Enums
+Enums can be created in the following way:
+```rust
+enum IpAddrKind {
+    V4,
+    V6,
+}
+
+fn main() {
+    let four = IpAddrKind::V4;  // instantiated like this
+    let six = IpAddrKind::V6;
+}
+```
+The members can have types:
+```rust
+fn main() {
+    enum IpAddr {
+        V4(u8, u8, u8, u8),
+        V6(String),
+    }
+
+    let home = IpAddr::V4(127, 0, 0, 1);
+
+    let loopback = IpAddr::V6(String::from("::1"));
+}
+```
+Consider the following enum:
+```rust
+enum Message {
+    Quit,
+    Move { x: i32, y: i32 },
+    Write(String),
+    ChangeColor(i32, i32, i32),
+}
+```
+This enum has four variants with different types:
+
+* `Quit` has no data associated with it at all.
+* `Move` includes an anonymous struct inside it.
+* `Write` includes a single `String`.
+* `ChangeColor` includes three `i32` values.
+
+### `Option<T>` Enum and Null
+Rust does not have null. To implement null behaviour, it uses the `Option<T>` enum. It is defined in the standard library as follows:
+```rust
+enum Option<T> {
+    Some(T),
+    None,
+}
+```
+Since `Option` is defined in the standard library, `Some` and `None` can be used directly:
+```rust
+fn main() {
+    let some_number = Some(5);          // type automatically determined
+                                        // by the value
+    let some_string = Some("a string"); // no need for Option::Some("foo")
+
+    let absent_number: Option<i32> = None; // type cannot be determined
+                                           // since there is no value
+}
+```
+`Option<T>` is different from `T`
+```rust
+fn main() {
+    let x: i8 = 5;
+    let y: Option<i8> = Some(5);
+
+    let sum = x + y;    // error since '+' not defined
+    // for Option<i8> and i8 addition
+}
+```
+### `match` Control Flow
+The value of members of enum can be accessed via `match` control flow.
+```rust
+enum Coin {
+    Penny,
+    Nickel,
+    Dime,
+    Quarter,
+}
+
+fn value_in_cents(coin: Coin) -> u8 {
+    match coin {
+        Coin::Penny => {
+            println!("Lucky penny!");
+            1
+        },
+        Coin::Nickel => 5,      // => separates pattern and the code to run
+        Coin::Dime => 10,
+        Coin::Quarter => 25,
+    }
+}
+```
+**Patterns bind to values** as follows:
+```rust
+#[derive(Debug)]
+enum UsState {
+    Alabama,
+    Alaska,
+    // --snip--
+}
+
+enum Coin {
+    Penny,
+    Nickel,
+    Dime,
+    Quarter(UsState),
+}
+
+fn value_in_cents(coin: Coin) -> u8 {
+    match coin {
+        Coin::Penny => 1,
+        Coin::Nickel => 5,
+        Coin::Dime => 10,
+        Coin::Quarter(state) => {   // value of UsState binds to state variable
+            println!("State quarter from {:?}!", state);
+            25
+        }
+    }
+}
+
+fn main() {
+    value_in_cents(Coin::Quarter(UsState::Alaska));
+}
+```
+and with `Option<T>`
+```rust
+fn main() {
+    fn plus_one(x: Option<i32>) -> Option<i32> {
+        match x {
+            None => None,
+            Some(i) => Some(i + 1),
+        }
+    }
+
+    let five = Some(5);
+    let six = plus_one(five); // Some(5) will match with Some(i) in 
+    // the match expression, so six will contain Some(6)
+    let none = plus_one(None); // similarly none will contain None
+}
+```
+**Matches are exhaustive**, following is an example:
+```rust
+fn main() {
+    fn plus_one(x: Option<i32>) -> Option<i32> {
+        match x {
+            Some(i) => Some(i + 1),
+        }
+    } // will result in an error since matching for None is 
+    // not implemented. Match requires one to handle all the
+    // patterns that an enum can assume
+
+    let five = Some(5);
+    let six = plus_one(five);
+    let none = plus_one(None);
+}
+```
+**`_` Placeholder**, saves one from implementing all the possible patterns that an `enum` can assume. `match` can also be used with other types other than `enum`. Consider the `u8`, it can store values from `0` to `255`.
+```rust
+fn main() {
+    let some_u8_value = 0u8;
+    match some_u8_value {
+        1 => println!("one"),
+        3 => println!("three"),
+        5 => println!("five"),
+        7 => println!("seven"),
+        _ => (),
+    }
+}
+```
+The `()` is just a unit value, so nothing will happen in the `_` case.
+
+### `if let` control flow
+The following two are exactly the same:
+```rust
+fn main() {
+    let some_u8_value = Some(0u8);
+    match some_u8_value {
+        Some(3) => println!("three"),
+        _ => (),
+    }
+////////////////////////////////////////////////
+    let some_u8_value = Some(0u8);
+    if let Some(3) = some_u8_value {
+        println!("three");
+    }
+}
+```
+`if let` allows one to write code for just one pattern rather than worrying about different patterns. One more example:
+```rust
+#[derive(Debug)]
+enum UsState {
+    Alabama,
+    Alaska,
+    // --snip--
+}
+
+enum Coin {
+    Penny,
+    Nickel,
+    Dime,
+    Quarter(UsState),
+}
+
+
+fn main() {
+    let coin = Coin::Penny;
+    let mut count = 0;
+////////////////////////match//////////////////////////////////////////////
+    match coin {
+        Coin::Quarter(state) => println!("State quarter from {:?}!", state),
+        _ => count += 1,
+    }
+//////////////////////////if let//////////////////////////////////////////
+    if let Coin::Quarter(state) = coin {
+        println!("State quarter from {:?}!", state);
+    } else {
+        count += 1;
+    }
+}
+```
