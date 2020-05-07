@@ -406,3 +406,201 @@ let a = [1, 2, 3, 4, 5];
 let slice = &a[1..3];   // type of slice: &[i32]
 ```
 
+## Structs
+Structs are defined using the `struct`
+```rust
+struct User {
+    username: String,
+    email: String,
+    sign_in_count: u64,
+    active: bool,
+}
+
+fn main() {
+    let user1 = User {
+        email: String::from("someone@example.com"),
+        username: String::from("someusername123"),
+        active: true,
+        sign_in_count: 1,
+    };  // user1 will be immutable
+    // all resources will be automatically allocated (RAII)
+
+    let mut user1 = User {
+        email: String::from("someone@example.com"),
+        username: String::from("someusername123"),
+        active: true,
+        sign_in_count: 1,
+    }; // user1 will be mutable
+
+    user1.email = String::from("anotheremail@example.com");
+}
+```
+
+### Shorthand in functions and using other instances
+```rust
+struct User {
+    username: String,
+    email: String,
+    sign_in_count: u64,
+    active: bool,
+}
+
+fn build_user(email: String, username: String) -> User {
+    User {
+        email,          // no need to do email: email
+        username,
+        active: true,
+        sign_in_count: 1,
+    }
+}
+
+fn main() {
+    let user1 = build_user(
+        String::from("someone@example.com"),
+        String::from("someusername123"),
+    );
+
+    let user2 = User {
+        email: String::from("another@example.com"),
+        username: String::from("anotherusername567"),
+        ..user1     // will populate rest of 
+                    // the fields from user1 automatically
+    };
+}
+```
+
+### Tuple structs
+```rust
+fn main() {
+    struct Color(i32, i32, i32);
+    struct Point(i32, i32, i32);
+
+    let black = Color(0, 0, 0);
+    let origin = Point(0, 0, 0); // black and origin behave like normal tuples
+}
+```
+
+### Ownership
+If all of struct members are non references then, the struct will own all of the value. The following will give an error since the reference has to be valid as long as struct is valid
+```rust
+struct User {
+    username: &str,     // error since it is unknown how
+                        // long this ref will be valid
+    email: &str,
+    sign_in_count: u64,
+    active: bool,
+}
+
+fn main() {
+    let user1 = User {
+        email: "someone@example.com",
+        username: "someusername123",
+        active: true,
+        sign_in_count: 1,
+    };
+}
+```
+
+### Defining methods in structs
+Using the `impl` block one can add methods to a struct
+```rust
+#[derive(Debug)]
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+impl Rectangle {
+    fn area(&self) -> u32 {
+        self.width * self.height
+    }
+}
+
+fn main() {
+    let rect1 = Rectangle {
+        width: 30,
+        height: 50,
+    };
+
+    println!(
+        "The area of the rectangle is {} square pixels.",
+        rect1.area()
+    );
+}
+```
+
+The signature of `self` in the parameter of `area` method, defines whether the object is borrowed or ownership is transferred or is mutable or not.
+
+Rust does not use `->` on object pointers. Rust has a feature called automatic referencing and dereferencing. Calling methods is one of the few places in Rust that has this behavior.
+
+Here’s how it works: when you call a method with `object.something()`, Rust automatically adds in &, &mut, or * so object matches the signature of the method. In other words, the following are the same:
+
+```rust
+p1.distance(&p2);
+(&p1).distance(&p2);
+```
+The first one looks much cleaner. This automatic referencing behavior works because methods have a clear receiver—the type of `self`. Given the receiver and name of a method, Rust can figure out definitively whether the method is reading (`&self`), mutating (`&mut self`), or consuming (`self`). The fact that Rust makes borrowing implicit for method receivers is a big part of making ownership ergonomic in practice.
+
+### Associated function
+Rust allows to define functions that don't take `self` parameter. For example, `String::from` is an associated function. Constructors are usually defined this way.
+
+```rust
+#[derive(Debug)]
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+impl Rectangle {
+    fn square(size: u32) -> Rectangle {
+        Rectangle {
+            width: size,
+            height: size,
+        }
+    }
+}
+
+fn main() {
+    let sq = Rectangle::square(3);
+}
+```
+
+### Multiple `impl` Blocks
+Rust also allows each `struct` to have more than one `impl` blocks.
+```rust
+#[derive(Debug)]
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+impl Rectangle {
+    fn area(&self) -> u32 {
+        self.width * self.height
+    }
+}
+
+impl Rectangle {
+    fn can_hold(&self, other: &Rectangle) -> bool {
+        self.width > other.width && self.height > other.height
+    }
+}
+
+fn main() {
+    let rect1 = Rectangle {
+        width: 30,
+        height: 50,
+    };
+    let rect2 = Rectangle {
+        width: 10,
+        height: 40,
+    };
+    let rect3 = Rectangle {
+        width: 60,
+        height: 45,
+    };
+
+    println!("Can rect1 hold rect2? {}", rect1.can_hold(&rect2));
+    println!("Can rect1 hold rect3? {}", rect1.can_hold(&rect3));
+}
+```
