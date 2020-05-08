@@ -882,3 +882,85 @@ fn main() {
     }
 } // <- v goes out of scope and is freed here, since it has the drop trait
 ```
+
+### `String` type
+A `String` is a wrapper over a `Vec<u8>`. It is mutable, growable, owned, UTF-8 encoded string type. Whereas the `str` type is a string literal and is an immutable1 sequence of UTF-8 bytes of dynamic length somewhere in memory.
+Take a look at the answer [here](https://stackoverflow.com/questions/24158114/what-are-the-differences-between-rusts-string-and-str).
+
+<!-- Since the size is unknown, one can only handle it behind a pointer. This means that str most commonly appears as `&str`: a reference to some UTF-8 data, normally called a "string slice" or just a "slice". A slice is just a view onto some data, and that data can be anywhere, e.g. -->
+
+<!-- * **In static storage**: a string literal "foo" is a `&'static str`. The data is hardcoded into the executable and loaded into memory when the program runs. -->
+
+<!-- * **Inside a heap allocated String**: String dereferences to a `&str` view of the String's data. -->
+
+<!-- * **On the stack**: e.g. the following creates a stack-allocated byte array, and then gets a view of that data as a `&str`: -->
+
+<!-- ```rust -->
+
+<!-- use std::str; -->
+<!-- let x: &[u8] = &[b'a', b'b', b'c']; -->
+
+<!-- let stack_str: &str = str::from_utf8(x).unwrap(); -->
+
+<!-- ``` -->
+
+<!-- In summary, use `String` if you need owned string data (like passing strings to other threads, or building them at runtime), and use `&str` if you only need a view of a string. -->
+
+<!-- This is identical to the relationship between a vector `Vec<T>` and a slice `&[T]`, and is similar to the relationship between by-value `T` and by-reference `&T` for general types. -->
+
+```rust
+fn main() {
+    let mut s = String::new(); // using new string can be created;
+
+    // or like this
+    let data = "initial contents";
+    let s = data.to_string();
+
+    // the method also works on a literal directly:
+    let s = "initial contents".to_string();
+
+    // or like this
+    let s = String::from("initial contents");
+
+    // can store any UTF-8 encoded string
+    let hello = String::from("Здравствуйте");
+
+    // can modify the string like this
+    let mut s = String::from("foo");
+    s.push_str("bar");  // s <- foobar
+    // push_str takes slice since we don't ownership
+
+    let s1 = String::from("Hello, ");
+    let s2 = String::from("world!");
+    let s3 = s1 + &s2; // note s1 has been moved here and can no longer be used
+    // add in the standard library is defined as if it takes self and &str as the parameter and returns a String. The above works because &String is automatically converted to &str because of deref coercion
+
+    let s1 = String::from("Hello, ");
+    let s2 = String::from("world!");
+    let s3 = format!("{}{}", s1, s2); // s1 can be used afterwards
+    // without any issue
+
+    // cannot index into a string or string slice like this
+    let s1 = String::from("hello");
+    let h = s1[0];  // error
+
+    let hello = "Здравствуйте";
+    let answer = &hello[0]; // error since each character
+    // is encoded to different size. 'д' requires 2 bytes but
+    // 'h' requires one byte
+
+    let hello = "Здравствуйте";
+    let s = &hello[0..4]; // s will contain Зд
+    let s = &hello[0..1]; // will give runtime error since each
+    // character is 2 bytes long
+
+    // iterating strings
+    for c in "नमस्ते".chars() {
+        println!("{}", c);
+    }
+
+    for b in "नमस्ते".bytes() {
+        println!("{}", b);
+    }
+}
+```
