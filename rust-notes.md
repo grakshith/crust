@@ -1028,3 +1028,153 @@ fn main() {
     // {"world": 2, "hello": 1, "wonderful": 1}
 }
 ```
+
+## `panic!`
+When `panic!` executes, the programs stops execution, prints a message and then unwinds and cleans up the stack before quitting. If `panic = 'abort'` set in Cargo.toml file, then code won't clean up the stack and unwind before quitting.
+```rust
+fn main() {
+    panic!("crash and burn");
+}
+```
+When `RUST_BACKTRACE` environment variable is set then a backtrace is also printed.
+
+## `Result<T, E>`
+`Result<T, E>` is used when one wants to do something else other than quitting at the event of an error. `Result<T, E>` is an `enum`
+```rust
+enum Result<T, E> {
+    Ok(T),
+    Err(E),
+}
+```
+In case of success `OK(T)` is returned and in case of error `Err(E)` is returned. I/O function might return a `Result`.
+```rust
+use std::fs::File;
+
+fn main() {
+    let f = File::open("hello.txt");
+
+    let f = match f {
+        Ok(file) => file,
+        Err(error) => panic!("Problem opening the file: {:?}", error),
+    };
+}
+```
+Instead of panicking on failure, if one tries to create a file then it may look like this:
+```rust
+use std::fs::File;
+use std::io::ErrorKind;
+
+fn main() {
+    let f = File::open("hello.txt");
+
+    let f = match f {
+        Ok(file) => file,
+        Err(error) => match error.kind() { // error being a struct,
+        //error.kind() returns the type of error
+            ErrorKind::NotFound => match File::create("hello.txt") {
+                // create will also return a Result
+                Ok(fc) => fc,
+                Err(e) => panic!("Problem creating the file: {:?}", e),
+            },
+            other_error => {
+                panic!("Problem opening the file: {:?}", other_error)
+            }
+        },
+    };
+
+    ///// the above can also be written as ////////////////////////////////
+    let f = File::open("hello.txt").unwrap_or_else(|error| {
+        if error.kind() == ErrorKind::NotFound {
+            File::create("hello.txt").unwrap_or_else(|error| {
+                panic!("Problem creating the file: {:?}", error);
+            })
+        } else {
+            panic!("Problem opening the file: {:?}", error);
+        }
+    });
+}
+```
+
+### `unwrap()` and `expect()`
+```rust
+use std::fs::File;
+
+fn main() {
+    let f = File::open("hello.txt").unwrap(); // unwrap returns the value
+    // that is bound to Ok(T) and in case of error panics
+
+    let f = File::open("hello.txt").expect("Failed to open hello.txt");
+    // expect behaves like unwrap, but instead of printing default message at
+    // panic, it prints the string that we pass as the parameter
+}
+```
+
+### Propagating Errors
+```rust
+
+#![allow(unused_variables)]
+use std::fs::File;
+use std::io;
+use std::io::Read;
+
+fn read_username_from_file() -> Result<String, io::Error> {
+    let f = File::open("hello.txt");
+
+    let mut f = match f {
+        Ok(file) => file,
+        Err(e) => return Err(e),   // on error will return error
+    };
+
+    let mut s = String::new();
+
+    match f.read_to_string(&mut s) {
+        Ok(_) => Ok(s),     // this will return Ok
+        Err(e) => Err(e),   // on error will return error
+    }
+}
+
+```
+
+### `?` Operator
+```rust
+#![allow(unused_variables)]
+use std::fs::File;
+use std::io;
+use std::io::Read;
+
+fn read_username_from_file() -> Result<String, io::Error> {
+    let mut f = File::open("hello.txt")?;
+    let mut s = String::new();
+    f.read_to_string(&mut s)?; // ? returns the value bound to Ok(T) on success
+    // and on error it returns from the function returning an error
+    Ok(s)
+}
+
+// one can do chaining with ? operator
+fn read_username_from_file_chaining() -> Result<String, io::Error> {
+    let mut s = String::new();
+
+    File::open("hello.txt")?.read_to_string(&mut s)?;
+
+    Ok(s)
+}
+
+// or use the in-built library function
+fn read_username_from_file_lib() -> Result<String, io::Error> {
+    fs::read_to_string("hello.txt")
+}
+
+// since ? operator returns from a function in case of error
+fn main() {
+    let f = File::open("hello.txt")?; // will give an error
+}
+
+// main can be modified like this
+use std::error::Error;
+fn main() -> Result<(), Box<dyn Error>> {
+    let f = File::open("hello.txt")?;
+
+    Ok(())
+}
+
+```
