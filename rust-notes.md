@@ -964,3 +964,67 @@ fn main() {
     }
 }
 ```
+### `HashMap` type
+Since `HashMap` is not that frequently used, it is not included in the prelude and hence not automatically imported. Need to use the `use` keyword to bring it into the scope.
+```rust
+use std::collections::HashMap;
+
+fn main() {
+    let mut scores = HashMap::new();
+
+    scores.insert(String::from("Blue"), 10);
+    scores.insert(String::from("Yellow"), 50);
+
+    // can be initialised like this as well
+    let teams = vec![String::from("Blue"), String::from("Yellow")];
+    let initial_scores = vec![10, 50];
+
+    let mut scores: HashMap<_, _> = 
+        teams.into_iter().zip(initial_scores.into_iter()).collect();
+
+    // Ownership
+    let field_name = String::from("Favorite color");
+    let field_value = String::from("Blue");
+
+    let mut map = HashMap::new();
+    map.insert(field_name, field_value);
+    // field_name and field_value are invalid at this point
+
+    // to retrieve a value use get
+    let mut scores = HashMap::new();
+
+    scores.insert(String::from("Blue"), 10);
+    scores.insert(String::from("Yellow"), 50);
+
+    let team_name = String::from("Blue");
+    let score = scores.get(&team_name); // type of score will be Option<&i32>
+    // value of score will be Some(&10)
+
+    // iterate through the HashMap as follows
+    for (key, value) in &scores {
+        println!("{}: {}", key, value);
+    }
+
+    // inserting on the same key will overwrite
+    scores.insert(String::from("Blue"), 50);
+
+    // or_insert on entry will insert only if the key was previously empty
+    scores.entry(String::from("Yellow")).or_insert(80);
+    scores.entry(String::from("Green")).or_insert(80);
+    // scores = {Yellow: 50, Blue: 50, Green: 80}
+
+    // updating based on old value
+    let text = "hello world wonderful world";
+
+    let mut map = HashMap::new();
+
+    // or_insert returns a ref to the value of a key
+    for word in text.split_whitespace() {
+        let count = map.entry(word).or_insert(0);
+        *count += 1;
+    }
+
+    println!("{:?}", map);
+    // {"world": 2, "hello": 1, "wonderful": 1}
+}
+```
