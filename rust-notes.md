@@ -533,7 +533,7 @@ The signature of `self` in the parameter of `area` method, defines whether the o
 
 Rust does not use `->` on object pointers. Rust has a feature called automatic referencing and dereferencing. Calling methods is one of the few places in Rust that has this behavior.
 
-Here’s how it works: when you call a method with `object.something()`, Rust automatically adds in &, &mut, or * so object matches the signature of the method. In other words, the following are the same:
+Here’s how it works: when you call a method with `object.something()`, Rust automatically adds in `&`, `&mut`, or `*` so object matches the signature of the method. In other words, the following are the same:
 
 ```rust
 p1.distance(&p2);
@@ -824,4 +824,61 @@ fn main() {
         count += 1;
     }
 }
+```
+## Packages, Crates and Modules
+
+* **Packages**: A Cargo feature that lets you build, test, and share crates
+* **Crates**: A tree of modules that produces a library or executable
+* **Modules** and **use**: Let you control the organization, scope, and privacy of paths
+* **Paths**: A way of naming an item, such as a struct, function, or module
+
+For more information on how to use modules using `mod` keyword and the `use` keyword refer to the [Rust-Doc](https://doc.rust-lang.org/book/ch07-00-managing-growing-projects-with-packages-crates-and-modules.html).
+
+## Common collections
+Built-in types like **array** and **tuple** types are **stored on stack**. Collections are a useful data structure to store data whose **size is not known at compile time** and are also **stored in the heap**.
+
+### Vector type `Vec<T>`
+```rust
+fn main() {
+    let v: Vec<i32> = Vec::new();   // type annotation required since the
+    // vector is not initialised with values to infer the type
+    // but if one adds the value to the vector then type
+    // annotation will not be required
+    let mut v = Vec::new();
+    v.push(1);
+    v.push(2);
+    v.push(3);
+    v.push(4);
+
+    // same as
+    let mut v = vec![1, 2, 3, 4];
+
+    let element = v[0]; // since i32 implements copy trait, this will work
+
+    let element = &v[0]; // borrows immutable reference of value
+    v.push(5); // will give an error since it is mutable ref if
+    // the line below is uncommented 
+    // let foo = element + 20;
+
+    let test = &mut v;
+    test[0] = 90;   // both of these work because of
+    (*test)[0] = 80; // rust's automatic referencing and dereferencing
+
+    // value can be directly updated
+    v[0] = 80;
+
+    let does_not_exist = &v[40]; // will cause a runtime panic not compile time
+    let does_not_exist = v.get(40); // will not cause runtime panic
+
+    // value can be accessed like this as well, get returns Option<&T>
+    match v.get(2) {
+        Some(third) => println!("The third element is {}", third),
+        None => println!("There is no third element."),
+    }
+
+    // values can be accessed from a loop as well
+    for i in &mut v {
+        *i += 50;
+    }
+} // <- v goes out of scope and is freed here, since it has the drop trait
 ```
