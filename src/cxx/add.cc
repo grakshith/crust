@@ -8,13 +8,13 @@ int main(int argc, char *argv[]){
         std::exit(1);
     }
 
-    int iterations = std::stoi(argv[1]);
+    unsigned long long iterations = std::stoull(argv[1]);
 
     std::srand(0);
 
     std::clock_t start, end;
     start = std::clock();
-    for(int i=0; i<iterations; i++){
+    for(unsigned long long i=0; i<iterations; i++){
         int a = std::rand();
         int b = std::rand();
         int c = a+b;

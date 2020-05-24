@@ -1,0 +1,9 @@
+{
+    "binaries": [
+        {
+            "name": "add",
+            "command": "cxx/add 50000",
+            "iterations": 100
+        }
+    ]
+}
