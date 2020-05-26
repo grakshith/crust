@@ -2,6 +2,6 @@
 fn main() {
 	let a = 5;
 	let b = 6;
-	let c = a + b;
-	println!("sum: {:?}", c);
+	let _c = a + b;
+	// println!("sum: {:?}", c);
 }

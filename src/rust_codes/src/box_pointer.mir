@@ -1,0 +1,185 @@
+// WARNING: This output format is intended for human consumers only
+// and is subject to change without notice. Knock yourself out.
+fn  main() -> () {
+    let mut _0: ();                      // return place in scope 0 at box_pointer.rs:2:11: 2:11
+    let _1: std::boxed::Box<i32>;        // in scope 0 at box_pointer.rs:3:6: 3:7
+    let _2: ();                          // in scope 0 at <::std::macros::println macros>:2:4: 2:71
+    let mut _3: std::fmt::Arguments;     // in scope 0 at <::std::macros::println macros>:2:29: 2:70
+    let mut _4: &[&str];                 // in scope 0 at box_pointer.rs:4:11: 4:25
+    let mut _5: &[&str; 2];              // in scope 0 at box_pointer.rs:4:11: 4:25
+    let _6: &[&str; 2];                  // in scope 0 at box_pointer.rs:4:11: 4:25
+    let mut _7: &[std::fmt::ArgumentV1]; // in scope 0 at <::std::macros::println macros>:2:29: 2:70
+    let mut _8: &[std::fmt::ArgumentV1; 1]; // in scope 0 at <::std::macros::println macros>:2:29: 2:70
+    let _9: &[std::fmt::ArgumentV1; 1];  // in scope 0 at <::std::macros::println macros>:2:29: 2:70
+    let _10: [std::fmt::ArgumentV1; 1];  // in scope 0 at <::std::macros::println macros>:2:29: 2:70
+    let mut _11: (&i32,);                // in scope 0 at <::std::macros::println macros>:2:29: 2:70
+    let mut _12: &i32;                   // in scope 0 at box_pointer.rs:4:27: 4:29
+    let mut _14: std::fmt::ArgumentV1;   // in scope 0 at <::std::macros::println macros>:2:29: 2:70
+    let mut _15: &i32;                   // in scope 0 at box_pointer.rs:4:27: 4:29
+    let mut _16: for<'r, 's, 't0> fn(&'r i32, &'s mut std::fmt::Formatter<'t0>) -> std::result::Result<(), std::fmt::Error>; // in scope 0 at box_pointer.rs:4:27: 4:29
+    scope 1 {
+        debug a => _1;                   // in scope 1 at box_pointer.rs:3:6: 3:7
+        let _13: &i32;                   // in scope 1 at box_pointer.rs:4:27: 4:29
+        let mut _17: &[&str; 2];         // in scope 1 at box_pointer.rs:4:11: 4:25
+        scope 2 {
+            debug arg0 => _13;           // in scope 2 at box_pointer.rs:4:27: 4:29
+        }
+    }
+
+    bb0: {
+        StorageLive(_1);                 // bb0[0]: scope 0 at box_pointer.rs:3:6: 3:7
+        _1 = const std::boxed::Box::<i32>::new(const 5i32) -> bb2; // bb0[1]: scope 0 at box_pointer.rs:3:10: 3:21
+                                         // ty::Const
+                                         // + ty: fn(i32) -> std::boxed::Box<i32> {std::boxed::Box::<i32>::new}
+                                         // + val: Value(Scalar(<ZST>))
+                                         // mir::Constant
+                                         // + span: box_pointer.rs:3:10: 3:18
+                                         // + user_ty: UserType(0)
+                                         // + literal: Const { ty: fn(i32) -> std::boxed::Box<i32> {std::boxed::Box::<i32>::new}, val: Value(Scalar(<ZST>)) }
+                                         // ty::Const
+                                         // + ty: i32
+                                         // + val: Value(Scalar(0x00000005))
+                                         // mir::Constant
+                                         // + span: box_pointer.rs:3:19: 3:20
+                                         // + literal: Const { ty: i32, val: Value(Scalar(0x00000005)) }
+    }
+
+    bb1 (cleanup): {
+        resume;                          // bb1[0]: scope 0 at box_pointer.rs:2:1: 5:2
+    }
+
+    bb2: {
+        StorageLive(_2);                 // bb2[0]: scope 1 at <::std::macros::println macros>:2:4: 2:71
+        StorageLive(_3);                 // bb2[1]: scope 1 at <::std::macros::println macros>:2:29: 2:70
+        StorageLive(_4);                 // bb2[2]: scope 1 at box_pointer.rs:4:11: 4:25
+        StorageLive(_5);                 // bb2[3]: scope 1 at box_pointer.rs:4:11: 4:25
+        StorageLive(_6);                 // bb2[4]: scope 1 at box_pointer.rs:4:11: 4:25
+        _17 = const main::promoted[0];   // bb2[5]: scope 1 at box_pointer.rs:4:11: 4:25
+                                         // ty::Const
+                                         // + ty: &[&str; 2]
+                                         // + val: Unevaluated(DefId(0:3 ~ box_pointer[317d]::main[0]), [], Some(promoted[0]))
+                                         // mir::Constant
+                                         // + span: box_pointer.rs:4:11: 4:25
+                                         // + literal: Const { ty: &[&str; 2], val: Unevaluated(DefId(0:3 ~ box_pointer[317d]::main[0]), [], Some(promoted[0])) }
+        _6 = _17;                        // bb2[6]: scope 1 at box_pointer.rs:4:11: 4:25
+        _5 = _6;                         // bb2[7]: scope 1 at box_pointer.rs:4:11: 4:25
+        _4 = move _5 as &[&str] (Pointer(Unsize)); // bb2[8]: scope 1 at box_pointer.rs:4:11: 4:25
+        StorageDead(_5);                 // bb2[9]: scope 1 at box_pointer.rs:4:24: 4:25
+        StorageLive(_7);                 // bb2[10]: scope 1 at <::std::macros::println macros>:2:29: 2:70
+        StorageLive(_8);                 // bb2[11]: scope 1 at <::std::macros::println macros>:2:29: 2:70
+        StorageLive(_9);                 // bb2[12]: scope 1 at <::std::macros::println macros>:2:29: 2:70
+        StorageLive(_10);                // bb2[13]: scope 1 at <::std::macros::println macros>:2:29: 2:70
+        StorageLive(_11);                // bb2[14]: scope 1 at <::std::macros::println macros>:2:29: 2:70
+        StorageLive(_12);                // bb2[15]: scope 1 at box_pointer.rs:4:27: 4:29
+        _12 = &(*_1);                    // bb2[16]: scope 1 at box_pointer.rs:4:27: 4:29
+        (_11.0: &i32) = move _12;        // bb2[17]: scope 1 at <::std::macros::println macros>:2:29: 2:70
+        StorageDead(_12);                // bb2[18]: scope 1 at <::std::macros::println macros>:2:69: 2:70
+        StorageLive(_13);                // bb2[19]: scope 1 at box_pointer.rs:4:27: 4:29
+        _13 = (_11.0: &i32);             // bb2[20]: scope 1 at box_pointer.rs:4:27: 4:29
+        StorageLive(_14);                // bb2[21]: scope 2 at <::std::macros::println macros>:2:29: 2:70
+        StorageLive(_15);                // bb2[22]: scope 2 at box_pointer.rs:4:27: 4:29
+        _15 = _13;                       // bb2[23]: scope 2 at box_pointer.rs:4:27: 4:29
+        StorageLive(_16);                // bb2[24]: scope 2 at box_pointer.rs:4:27: 4:29
+        _16 = const <i32 as std::fmt::Debug>::fmt as for<'r, 's, 't0> fn(&'r i32, &'s mut std::fmt::Formatter<'t0>) -> std::result::Result<(), std::fmt::Error> (Pointer(ReifyFnPointer)); // bb2[25]: scope 2 at box_pointer.rs:4:27: 4:29
+                                         // ty::Const
+                                         // + ty: for<'r, 's, 't0> fn(&'r i32, &'s mut std::fmt::Formatter<'t0>) -> std::result::Result<(), std::fmt::Error> {<i32 as std::fmt::Debug>::fmt}
+                                         // + val: Value(Scalar(<ZST>))
+                                         // mir::Constant
+                                         // + span: box_pointer.rs:4:27: 4:29
+                                         // + literal: Const { ty: for<'r, 's, 't0> fn(&'r i32, &'s mut std::fmt::Formatter<'t0>) -> std::result::Result<(), std::fmt::Error> {<i32 as std::fmt::Debug>::fmt}, val: Value(Scalar(<ZST>)) }
+        _14 = const std::fmt::ArgumentV1::new::<i32>(move _15, move _16) -> [return: bb3, unwind: bb4]; // bb2[26]: scope 2 at <::std::macros::println macros>:2:29: 2:70
+                                         // ty::Const
+                                         // + ty: for<'b> fn(&'b i32, for<'r, 's, 't0> fn(&'r i32, &'s mut std::fmt::Formatter<'t0>) -> std::result::Result<(), std::fmt::Error>) -> std::fmt::ArgumentV1<'b> {std::fmt::ArgumentV1::new::<i32>}
+                                         // + val: Value(Scalar(<ZST>))
+                                         // mir::Constant
+                                         // + span: <::std::macros::println macros>:2:29: 2:70
+                                         // + user_ty: UserType(2)
+                                         // + literal: Const { ty: for<'b> fn(&'b i32, for<'r, 's, 't0> fn(&'r i32, &'s mut std::fmt::Formatter<'t0>) -> std::result::Result<(), std::fmt::Error>) -> std::fmt::ArgumentV1<'b> {std::fmt::ArgumentV1::new::<i32>}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb3: {
+        StorageDead(_16);                // bb3[0]: scope 2 at <::std::macros::println macros>:2:69: 2:70
+        StorageDead(_15);                // bb3[1]: scope 2 at <::std::macros::println macros>:2:69: 2:70
+        _10 = [move _14];                // bb3[2]: scope 2 at <::std::macros::println macros>:2:29: 2:70
+        StorageDead(_14);                // bb3[3]: scope 2 at <::std::macros::println macros>:2:69: 2:70
+        StorageDead(_13);                // bb3[4]: scope 1 at <::std::macros::println macros>:2:69: 2:70
+        _9 = &_10;                       // bb3[5]: scope 1 at <::std::macros::println macros>:2:29: 2:70
+        _8 = _9;                         // bb3[6]: scope 1 at <::std::macros::println macros>:2:29: 2:70
+        _7 = move _8 as &[std::fmt::ArgumentV1] (Pointer(Unsize)); // bb3[7]: scope 1 at <::std::macros::println macros>:2:29: 2:70
+        StorageDead(_8);                 // bb3[8]: scope 1 at <::std::macros::println macros>:2:69: 2:70
+        _3 = const std::fmt::Arguments::new_v1(move _4, move _7) -> [return: bb5, unwind: bb4]; // bb3[9]: scope 1 at <::std::macros::println macros>:2:29: 2:70
+                                         // ty::Const
+                                         // + ty: fn(&[&str], &[std::fmt::ArgumentV1]) -> std::fmt::Arguments {std::fmt::Arguments::new_v1}
+                                         // + val: Value(Scalar(<ZST>))
+                                         // mir::Constant
+                                         // + span: <::std::macros::println macros>:2:29: 2:70
+                                         // + user_ty: UserType(1)
+                                         // + literal: Const { ty: fn(&[&str], &[std::fmt::ArgumentV1]) -> std::fmt::Arguments {std::fmt::Arguments::new_v1}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb4 (cleanup): {
+        drop(_1) -> bb1;                 // bb4[0]: scope 0 at box_pointer.rs:5:1: 5:2
+    }
+
+    bb5: {
+        StorageDead(_7);                 // bb5[0]: scope 1 at <::std::macros::println macros>:2:69: 2:70
+        StorageDead(_4);                 // bb5[1]: scope 1 at <::std::macros::println macros>:2:69: 2:70
+        _2 = const std::io::_print(move _3) -> [return: bb6, unwind: bb4]; // bb5[2]: scope 1 at <::std::macros::println macros>:2:4: 2:71
+                                         // ty::Const
+                                         // + ty: for<'r> fn(std::fmt::Arguments<'r>) {std::io::_print}
+                                         // + val: Value(Scalar(<ZST>))
+                                         // mir::Constant
+                                         // + span: <::std::macros::println macros>:2:4: 2:27
+                                         // + literal: Const { ty: for<'r> fn(std::fmt::Arguments<'r>) {std::io::_print}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb6: {
+        StorageDead(_3);                 // bb6[0]: scope 1 at <::std::macros::println macros>:2:70: 2:71
+        StorageDead(_11);                // bb6[1]: scope 1 at <::std::macros::println macros>:2:72: 2:73
+        StorageDead(_10);                // bb6[2]: scope 1 at <::std::macros::println macros>:2:72: 2:73
+        StorageDead(_9);                 // bb6[3]: scope 1 at <::std::macros::println macros>:2:72: 2:73
+        StorageDead(_6);                 // bb6[4]: scope 1 at <::std::macros::println macros>:2:72: 2:73
+        StorageDead(_2);                 // bb6[5]: scope 1 at <::std::macros::println macros>:2:72: 2:73
+        drop(_1) -> bb7;                 // bb6[6]: scope 0 at box_pointer.rs:5:1: 5:2
+    }
+
+    bb7: {
+        StorageDead(_1);                 // bb7[0]: scope 0 at box_pointer.rs:5:1: 5:2
+        return;                          // bb7[1]: scope 0 at box_pointer.rs:5:2: 5:2
+    }
+}
+
+promoted[0] in  main: &[&str; 2] = {
+    let mut _0: &[&str; 2];              // return place in scope 0 at box_pointer.rs:4:11: 4:25
+    let mut _1: [&str; 2];               // in scope 0 at box_pointer.rs:4:11: 4:25
+    let mut _2: &str;                    // in scope 0 at box_pointer.rs:4:11: 4:25
+    let mut _3: &str;                    // in scope 0 at box_pointer.rs:4:11: 4:25
+    let mut _4: &str;                    // in scope 0 at box_pointer.rs:4:11: 4:25
+    let mut _5: &str;                    // in scope 0 at box_pointer.rs:4:11: 4:25
+    scope 1 {
+        scope 2 {
+        }
+    }
+
+    bb0: {
+        _3 = const "result: ";           // bb0[0]: scope 0 at box_pointer.rs:4:11: 4:25
+                                         // ty::Const
+                                         // + ty: &str
+                                         // + val: Value(Slice { data: Allocation { bytes: [114, 101, 115, 117, 108, 116, 58, 32], relocations: Relocations(SortedMap { data: [] }), undef_mask: UndefMask { blocks: [255], len: Size { raw: 8 } }, size: Size { raw: 8 }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 8 })
+                                         // mir::Constant
+                                         // + span: box_pointer.rs:4:11: 4:25
+                                         // + literal: Const { ty: &str, val: Value(Slice { data: Allocation { bytes: [114, 101, 115, 117, 108, 116, 58, 32], relocations: Relocations(SortedMap { data: [] }), undef_mask: UndefMask { blocks: [255], len: Size { raw: 8 } }, size: Size { raw: 8 }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 8 }) }
+        _2 = _3;                         // bb0[1]: scope 0 at box_pointer.rs:4:11: 4:25
+        _5 = const "\n";                 // bb0[2]: scope 0 at box_pointer.rs:4:11: 4:25
+                                         // ty::Const
+                                         // + ty: &str
+                                         // + val: Value(Slice { data: Allocation { bytes: [10], relocations: Relocations(SortedMap { data: [] }), undef_mask: UndefMask { blocks: [1], len: Size { raw: 1 } }, size: Size { raw: 1 }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 1 })
+                                         // mir::Constant
+                                         // + span: box_pointer.rs:4:11: 4:25
+                                         // + literal: Const { ty: &str, val: Value(Slice { data: Allocation { bytes: [10], relocations: Relocations(SortedMap { data: [] }), undef_mask: UndefMask { blocks: [1], len: Size { raw: 1 } }, size: Size { raw: 1 }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 1 }) }
+        _4 = _5;                         // bb0[3]: scope 0 at box_pointer.rs:4:11: 4:25
+        _1 = [move _2, move _4];         // bb0[4]: scope 0 at box_pointer.rs:4:11: 4:25
+        _0 = &_1;                        // bb0[5]: scope 0 at box_pointer.rs:4:11: 4:25
+        return;                          // bb0[6]: scope 0 at box_pointer.rs:4:11: 4:25
+    }
+}

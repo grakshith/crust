@@ -1,0 +1,50 @@
+// WARNING: This output format is intended for human consumers only
+// and is subject to change without notice. Knock yourself out.
+fn  main() -> () {
+    let mut _0: ();                      // return place in scope 0 at add.rs:2:11: 2:11
+    let _1: i32;                         // in scope 0 at add.rs:3:6: 3:7
+    let mut _4: i32;                     // in scope 0 at add.rs:5:11: 5:12
+    let mut _5: i32;                     // in scope 0 at add.rs:5:15: 5:16
+    scope 1 {
+        debug a => _1;                   // in scope 1 at add.rs:3:6: 3:7
+        let _2: i32;                     // in scope 1 at add.rs:4:6: 4:7
+        scope 2 {
+            debug b => _2;               // in scope 2 at add.rs:4:6: 4:7
+            let _3: i32;                 // in scope 2 at add.rs:5:6: 5:8
+            scope 3 {
+                debug _c => _3;          // in scope 3 at add.rs:5:6: 5:8
+            }
+        }
+    }
+
+    bb0: {
+        StorageLive(_1);                 // bb0[0]: scope 0 at add.rs:3:6: 3:7
+        _1 = const 5i32;                 // bb0[1]: scope 0 at add.rs:3:10: 3:11
+                                         // ty::Const
+                                         // + ty: i32
+                                         // + val: Value(Scalar(0x00000005))
+                                         // mir::Constant
+                                         // + span: add.rs:3:10: 3:11
+                                         // + literal: Const { ty: i32, val: Value(Scalar(0x00000005)) }
+        StorageLive(_2);                 // bb0[2]: scope 1 at add.rs:4:6: 4:7
+        _2 = const 6i32;                 // bb0[3]: scope 1 at add.rs:4:10: 4:11
+                                         // ty::Const
+                                         // + ty: i32
+                                         // + val: Value(Scalar(0x00000006))
+                                         // mir::Constant
+                                         // + span: add.rs:4:10: 4:11
+                                         // + literal: Const { ty: i32, val: Value(Scalar(0x00000006)) }
+        StorageLive(_3);                 // bb0[4]: scope 2 at add.rs:5:6: 5:8
+        StorageLive(_4);                 // bb0[5]: scope 2 at add.rs:5:11: 5:12
+        _4 = _1;                         // bb0[6]: scope 2 at add.rs:5:11: 5:12
+        StorageLive(_5);                 // bb0[7]: scope 2 at add.rs:5:15: 5:16
+        _5 = _2;                         // bb0[8]: scope 2 at add.rs:5:15: 5:16
+        _3 = Add(move _4, move _5);      // bb0[9]: scope 2 at add.rs:5:11: 5:16
+        StorageDead(_5);                 // bb0[10]: scope 2 at add.rs:5:15: 5:16
+        StorageDead(_4);                 // bb0[11]: scope 2 at add.rs:5:15: 5:16
+        StorageDead(_3);                 // bb0[12]: scope 2 at add.rs:7:1: 7:2
+        StorageDead(_2);                 // bb0[13]: scope 1 at add.rs:7:1: 7:2
+        StorageDead(_1);                 // bb0[14]: scope 0 at add.rs:7:1: 7:2
+        return;                          // bb0[15]: scope 0 at add.rs:7:2: 7:2
+    }
+}
