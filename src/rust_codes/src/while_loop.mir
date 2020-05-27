@@ -1,0 +1,280 @@
+// WARNING: This output format is intended for human consumers only
+// and is subject to change without notice. Knock yourself out.
+fn  main() -> () {
+    let mut _0: ();                      // return place in scope 0 at while_loop.rs:1:11: 1:11
+    let mut _1: i32;                     // in scope 0 at while_loop.rs:2:6: 2:13
+    let mut _4: bool;                    // in scope 0 at while_loop.rs:5:8: 5:13
+    let mut _5: usize;                   // in scope 0 at while_loop.rs:5:8: 5:9
+    let mut _6: i32;                     // in scope 0 at while_loop.rs:6:10: 6:14
+    let _7: usize;                       // in scope 0 at while_loop.rs:6:12: 6:13
+    let mut _8: usize;                   // in scope 0 at while_loop.rs:6:10: 6:14
+    let mut _9: bool;                    // in scope 0 at while_loop.rs:6:10: 6:14
+    let _10: ();                         // in scope 0 at <::std::macros::println macros>:2:4: 2:71
+    let mut _11: std::fmt::Arguments;    // in scope 0 at <::std::macros::println macros>:2:29: 2:70
+    let mut _12: &[&str];                // in scope 0 at while_loop.rs:10:11: 10:17
+    let mut _13: &[&str; 2];             // in scope 0 at while_loop.rs:10:11: 10:17
+    let _14: &[&str; 2];                 // in scope 0 at while_loop.rs:10:11: 10:17
+    let mut _15: &[std::fmt::ArgumentV1]; // in scope 0 at <::std::macros::println macros>:2:29: 2:70
+    let mut _16: &[std::fmt::ArgumentV1; 1]; // in scope 0 at <::std::macros::println macros>:2:29: 2:70
+    let _17: &[std::fmt::ArgumentV1; 1]; // in scope 0 at <::std::macros::println macros>:2:29: 2:70
+    let _18: [std::fmt::ArgumentV1; 1];  // in scope 0 at <::std::macros::println macros>:2:29: 2:70
+    let mut _19: (&i32,);                // in scope 0 at <::std::macros::println macros>:2:29: 2:70
+    let mut _20: &i32;                   // in scope 0 at while_loop.rs:10:19: 10:22
+    let mut _22: std::fmt::ArgumentV1;   // in scope 0 at <::std::macros::println macros>:2:29: 2:70
+    let mut _23: &i32;                   // in scope 0 at while_loop.rs:10:19: 10:22
+    let mut _24: for<'r, 's, 't0> fn(&'r i32, &'s mut std::fmt::Formatter<'t0>) -> std::result::Result<(), std::fmt::Error>; // in scope 0 at while_loop.rs:10:19: 10:22
+    scope 1 {
+        debug sum => _1;                 // in scope 1 at while_loop.rs:2:6: 2:13
+        let _2: [i32; 6];                // in scope 1 at while_loop.rs:3:6: 3:7
+        scope 2 {
+            debug a => _2;               // in scope 2 at while_loop.rs:3:6: 3:7
+            let mut _3: usize;           // in scope 2 at while_loop.rs:4:6: 4:11
+            scope 3 {
+                debug i => _3;           // in scope 3 at while_loop.rs:4:6: 4:11
+                let _21: &i32;           // in scope 3 at while_loop.rs:10:19: 10:22
+                let mut _25: &[&str; 2]; // in scope 3 at while_loop.rs:10:11: 10:17
+                scope 4 {
+                    debug arg0 => _21;   // in scope 4 at while_loop.rs:10:19: 10:22
+                }
+            }
+        }
+    }
+
+    bb0: {
+        StorageLive(_1);                 // bb0[0]: scope 0 at while_loop.rs:2:6: 2:13
+        _1 = const 0i32;                 // bb0[1]: scope 0 at while_loop.rs:2:16: 2:17
+                                         // ty::Const
+                                         // + ty: i32
+                                         // + val: Value(Scalar(0x00000000))
+                                         // mir::Constant
+                                         // + span: while_loop.rs:2:16: 2:17
+                                         // + literal: Const { ty: i32, val: Value(Scalar(0x00000000)) }
+        StorageLive(_2);                 // bb0[2]: scope 1 at while_loop.rs:3:6: 3:7
+        _2 = [const 7i32, const 8i32, const 9i32, const 10i32, const 11i32, const 12i32]; // bb0[3]: scope 1 at while_loop.rs:3:10: 3:31
+                                         // ty::Const
+                                         // + ty: i32
+                                         // + val: Value(Scalar(0x00000007))
+                                         // mir::Constant
+                                         // + span: while_loop.rs:3:11: 3:12
+                                         // + literal: Const { ty: i32, val: Value(Scalar(0x00000007)) }
+                                         // ty::Const
+                                         // + ty: i32
+                                         // + val: Value(Scalar(0x00000008))
+                                         // mir::Constant
+                                         // + span: while_loop.rs:3:14: 3:15
+                                         // + literal: Const { ty: i32, val: Value(Scalar(0x00000008)) }
+                                         // ty::Const
+                                         // + ty: i32
+                                         // + val: Value(Scalar(0x00000009))
+                                         // mir::Constant
+                                         // + span: while_loop.rs:3:17: 3:18
+                                         // + literal: Const { ty: i32, val: Value(Scalar(0x00000009)) }
+                                         // ty::Const
+                                         // + ty: i32
+                                         // + val: Value(Scalar(0x0000000a))
+                                         // mir::Constant
+                                         // + span: while_loop.rs:3:20: 3:22
+                                         // + literal: Const { ty: i32, val: Value(Scalar(0x0000000a)) }
+                                         // ty::Const
+                                         // + ty: i32
+                                         // + val: Value(Scalar(0x0000000b))
+                                         // mir::Constant
+                                         // + span: while_loop.rs:3:24: 3:26
+                                         // + literal: Const { ty: i32, val: Value(Scalar(0x0000000b)) }
+                                         // ty::Const
+                                         // + ty: i32
+                                         // + val: Value(Scalar(0x0000000c))
+                                         // mir::Constant
+                                         // + span: while_loop.rs:3:28: 3:30
+                                         // + literal: Const { ty: i32, val: Value(Scalar(0x0000000c)) }
+        StorageLive(_3);                 // bb0[4]: scope 2 at while_loop.rs:4:6: 4:11
+        _3 = const 0usize;               // bb0[5]: scope 2 at while_loop.rs:4:14: 4:15
+                                         // ty::Const
+                                         // + ty: usize
+                                         // + val: Value(Scalar(0x0000000000000000))
+                                         // mir::Constant
+                                         // + span: while_loop.rs:4:14: 4:15
+                                         // + literal: Const { ty: usize, val: Value(Scalar(0x0000000000000000)) }
+        goto -> bb1;                     // bb0[6]: scope 3 at while_loop.rs:5:2: 9:3
+    }
+
+    bb1: {
+        StorageLive(_4);                 // bb1[0]: scope 3 at while_loop.rs:5:8: 5:13
+        StorageLive(_5);                 // bb1[1]: scope 3 at while_loop.rs:5:8: 5:9
+        _5 = _3;                         // bb1[2]: scope 3 at while_loop.rs:5:8: 5:9
+        _4 = Lt(move _5, const 3usize);  // bb1[3]: scope 3 at while_loop.rs:5:8: 5:13
+                                         // ty::Const
+                                         // + ty: usize
+                                         // + val: Value(Scalar(0x0000000000000003))
+                                         // mir::Constant
+                                         // + span: while_loop.rs:5:12: 5:13
+                                         // + literal: Const { ty: usize, val: Value(Scalar(0x0000000000000003)) }
+        StorageDead(_5);                 // bb1[4]: scope 3 at while_loop.rs:5:12: 5:13
+        switchInt(_4) -> [false: bb2, otherwise: bb3]; // bb1[5]: scope 3 at while_loop.rs:5:2: 9:3
+    }
+
+    bb2: {
+        StorageDead(_4);                 // bb2[0]: scope 3 at while_loop.rs:5:12: 5:13
+        StorageLive(_10);                // bb2[1]: scope 3 at <::std::macros::println macros>:2:4: 2:71
+        StorageLive(_11);                // bb2[2]: scope 3 at <::std::macros::println macros>:2:29: 2:70
+        StorageLive(_12);                // bb2[3]: scope 3 at while_loop.rs:10:11: 10:17
+        StorageLive(_13);                // bb2[4]: scope 3 at while_loop.rs:10:11: 10:17
+        StorageLive(_14);                // bb2[5]: scope 3 at while_loop.rs:10:11: 10:17
+        _25 = const main::promoted[0];   // bb2[6]: scope 3 at while_loop.rs:10:11: 10:17
+                                         // ty::Const
+                                         // + ty: &[&str; 2]
+                                         // + val: Unevaluated(DefId(0:3 ~ while_loop[317d]::main[0]), [], Some(promoted[0]))
+                                         // mir::Constant
+                                         // + span: while_loop.rs:10:11: 10:17
+                                         // + literal: Const { ty: &[&str; 2], val: Unevaluated(DefId(0:3 ~ while_loop[317d]::main[0]), [], Some(promoted[0])) }
+        _14 = _25;                       // bb2[7]: scope 3 at while_loop.rs:10:11: 10:17
+        _13 = _14;                       // bb2[8]: scope 3 at while_loop.rs:10:11: 10:17
+        _12 = move _13 as &[&str] (Pointer(Unsize)); // bb2[9]: scope 3 at while_loop.rs:10:11: 10:17
+        StorageDead(_13);                // bb2[10]: scope 3 at while_loop.rs:10:16: 10:17
+        StorageLive(_15);                // bb2[11]: scope 3 at <::std::macros::println macros>:2:29: 2:70
+        StorageLive(_16);                // bb2[12]: scope 3 at <::std::macros::println macros>:2:29: 2:70
+        StorageLive(_17);                // bb2[13]: scope 3 at <::std::macros::println macros>:2:29: 2:70
+        StorageLive(_18);                // bb2[14]: scope 3 at <::std::macros::println macros>:2:29: 2:70
+        StorageLive(_19);                // bb2[15]: scope 3 at <::std::macros::println macros>:2:29: 2:70
+        StorageLive(_20);                // bb2[16]: scope 3 at while_loop.rs:10:19: 10:22
+        _20 = &_1;                       // bb2[17]: scope 3 at while_loop.rs:10:19: 10:22
+        (_19.0: &i32) = move _20;        // bb2[18]: scope 3 at <::std::macros::println macros>:2:29: 2:70
+        StorageDead(_20);                // bb2[19]: scope 3 at <::std::macros::println macros>:2:69: 2:70
+        StorageLive(_21);                // bb2[20]: scope 3 at while_loop.rs:10:19: 10:22
+        _21 = (_19.0: &i32);             // bb2[21]: scope 3 at while_loop.rs:10:19: 10:22
+        StorageLive(_22);                // bb2[22]: scope 4 at <::std::macros::println macros>:2:29: 2:70
+        StorageLive(_23);                // bb2[23]: scope 4 at while_loop.rs:10:19: 10:22
+        _23 = _21;                       // bb2[24]: scope 4 at while_loop.rs:10:19: 10:22
+        StorageLive(_24);                // bb2[25]: scope 4 at while_loop.rs:10:19: 10:22
+        _24 = const <i32 as std::fmt::Debug>::fmt as for<'r, 's, 't0> fn(&'r i32, &'s mut std::fmt::Formatter<'t0>) -> std::result::Result<(), std::fmt::Error> (Pointer(ReifyFnPointer)); // bb2[26]: scope 4 at while_loop.rs:10:19: 10:22
+                                         // ty::Const
+                                         // + ty: for<'r, 's, 't0> fn(&'r i32, &'s mut std::fmt::Formatter<'t0>) -> std::result::Result<(), std::fmt::Error> {<i32 as std::fmt::Debug>::fmt}
+                                         // + val: Value(Scalar(<ZST>))
+                                         // mir::Constant
+                                         // + span: while_loop.rs:10:19: 10:22
+                                         // + literal: Const { ty: for<'r, 's, 't0> fn(&'r i32, &'s mut std::fmt::Formatter<'t0>) -> std::result::Result<(), std::fmt::Error> {<i32 as std::fmt::Debug>::fmt}, val: Value(Scalar(<ZST>)) }
+        _22 = const std::fmt::ArgumentV1::new::<i32>(move _23, move _24) -> bb5; // bb2[27]: scope 4 at <::std::macros::println macros>:2:29: 2:70
+                                         // ty::Const
+                                         // + ty: for<'b> fn(&'b i32, for<'r, 's, 't0> fn(&'r i32, &'s mut std::fmt::Formatter<'t0>) -> std::result::Result<(), std::fmt::Error>) -> std::fmt::ArgumentV1<'b> {std::fmt::ArgumentV1::new::<i32>}
+                                         // + val: Value(Scalar(<ZST>))
+                                         // mir::Constant
+                                         // + span: <::std::macros::println macros>:2:29: 2:70
+                                         // + user_ty: UserType(1)
+                                         // + literal: Const { ty: for<'b> fn(&'b i32, for<'r, 's, 't0> fn(&'r i32, &'s mut std::fmt::Formatter<'t0>) -> std::result::Result<(), std::fmt::Error>) -> std::fmt::ArgumentV1<'b> {std::fmt::ArgumentV1::new::<i32>}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb3: {
+        StorageLive(_6);                 // bb3[0]: scope 3 at while_loop.rs:6:10: 6:14
+        StorageLive(_7);                 // bb3[1]: scope 3 at while_loop.rs:6:12: 6:13
+        _7 = _3;                         // bb3[2]: scope 3 at while_loop.rs:6:12: 6:13
+        _8 = const 6usize;               // bb3[3]: scope 3 at while_loop.rs:6:10: 6:14
+                                         // ty::Const
+                                         // + ty: usize
+                                         // + val: Value(Scalar(0x0000000000000006))
+                                         // mir::Constant
+                                         // + span: while_loop.rs:6:10: 6:14
+                                         // + literal: Const { ty: usize, val: Value(Scalar(0x0000000000000006)) }
+        _9 = Lt(_7, _8);                 // bb3[4]: scope 3 at while_loop.rs:6:10: 6:14
+        assert(move _9, "index out of bounds: the len is move _8 but the index is _7") -> bb4; // bb3[5]: scope 3 at while_loop.rs:6:10: 6:14
+    }
+
+    bb4: {
+        _6 = _2[_7];                     // bb4[0]: scope 3 at while_loop.rs:6:10: 6:14
+        _1 = Add(_1, move _6);           // bb4[1]: scope 3 at while_loop.rs:6:3: 6:14
+        StorageDead(_6);                 // bb4[2]: scope 3 at while_loop.rs:6:13: 6:14
+        StorageDead(_7);                 // bb4[3]: scope 3 at while_loop.rs:6:14: 6:15
+        _3 = Add(_3, const 1usize);      // bb4[4]: scope 3 at while_loop.rs:7:3: 7:9
+                                         // ty::Const
+                                         // + ty: usize
+                                         // + val: Value(Scalar(0x0000000000000001))
+                                         // mir::Constant
+                                         // + span: while_loop.rs:7:8: 7:9
+                                         // + literal: Const { ty: usize, val: Value(Scalar(0x0000000000000001)) }
+        StorageDead(_4);                 // bb4[5]: scope 3 at while_loop.rs:5:12: 5:13
+        goto -> bb1;                     // bb4[6]: scope 3 at while_loop.rs:5:2: 9:3
+    }
+
+    bb5: {
+        StorageDead(_24);                // bb5[0]: scope 4 at <::std::macros::println macros>:2:69: 2:70
+        StorageDead(_23);                // bb5[1]: scope 4 at <::std::macros::println macros>:2:69: 2:70
+        _18 = [move _22];                // bb5[2]: scope 4 at <::std::macros::println macros>:2:29: 2:70
+        StorageDead(_22);                // bb5[3]: scope 4 at <::std::macros::println macros>:2:69: 2:70
+        StorageDead(_21);                // bb5[4]: scope 3 at <::std::macros::println macros>:2:69: 2:70
+        _17 = &_18;                      // bb5[5]: scope 3 at <::std::macros::println macros>:2:29: 2:70
+        _16 = _17;                       // bb5[6]: scope 3 at <::std::macros::println macros>:2:29: 2:70
+        _15 = move _16 as &[std::fmt::ArgumentV1] (Pointer(Unsize)); // bb5[7]: scope 3 at <::std::macros::println macros>:2:29: 2:70
+        StorageDead(_16);                // bb5[8]: scope 3 at <::std::macros::println macros>:2:69: 2:70
+        _11 = const std::fmt::Arguments::new_v1(move _12, move _15) -> bb6; // bb5[9]: scope 3 at <::std::macros::println macros>:2:29: 2:70
+                                         // ty::Const
+                                         // + ty: fn(&[&str], &[std::fmt::ArgumentV1]) -> std::fmt::Arguments {std::fmt::Arguments::new_v1}
+                                         // + val: Value(Scalar(<ZST>))
+                                         // mir::Constant
+                                         // + span: <::std::macros::println macros>:2:29: 2:70
+                                         // + user_ty: UserType(0)
+                                         // + literal: Const { ty: fn(&[&str], &[std::fmt::ArgumentV1]) -> std::fmt::Arguments {std::fmt::Arguments::new_v1}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb6: {
+        StorageDead(_15);                // bb6[0]: scope 3 at <::std::macros::println macros>:2:69: 2:70
+        StorageDead(_12);                // bb6[1]: scope 3 at <::std::macros::println macros>:2:69: 2:70
+        _10 = const std::io::_print(move _11) -> bb7; // bb6[2]: scope 3 at <::std::macros::println macros>:2:4: 2:71
+                                         // ty::Const
+                                         // + ty: for<'r> fn(std::fmt::Arguments<'r>) {std::io::_print}
+                                         // + val: Value(Scalar(<ZST>))
+                                         // mir::Constant
+                                         // + span: <::std::macros::println macros>:2:4: 2:27
+                                         // + literal: Const { ty: for<'r> fn(std::fmt::Arguments<'r>) {std::io::_print}, val: Value(Scalar(<ZST>)) }
+    }
+
+    bb7: {
+        StorageDead(_11);                // bb7[0]: scope 3 at <::std::macros::println macros>:2:70: 2:71
+        StorageDead(_19);                // bb7[1]: scope 3 at <::std::macros::println macros>:2:72: 2:73
+        StorageDead(_18);                // bb7[2]: scope 3 at <::std::macros::println macros>:2:72: 2:73
+        StorageDead(_17);                // bb7[3]: scope 3 at <::std::macros::println macros>:2:72: 2:73
+        StorageDead(_14);                // bb7[4]: scope 3 at <::std::macros::println macros>:2:72: 2:73
+        StorageDead(_10);                // bb7[5]: scope 3 at <::std::macros::println macros>:2:72: 2:73
+        StorageDead(_3);                 // bb7[6]: scope 2 at while_loop.rs:11:1: 11:2
+        StorageDead(_2);                 // bb7[7]: scope 1 at while_loop.rs:11:1: 11:2
+        StorageDead(_1);                 // bb7[8]: scope 0 at while_loop.rs:11:1: 11:2
+        return;                          // bb7[9]: scope 0 at while_loop.rs:11:2: 11:2
+    }
+}
+
+promoted[0] in  main: &[&str; 2] = {
+    let mut _0: &[&str; 2];              // return place in scope 0 at while_loop.rs:10:11: 10:17
+    let mut _1: [&str; 2];               // in scope 0 at while_loop.rs:10:11: 10:17
+    let mut _2: &str;                    // in scope 0 at while_loop.rs:10:11: 10:17
+    let mut _3: &str;                    // in scope 0 at while_loop.rs:10:11: 10:17
+    let mut _4: &str;                    // in scope 0 at while_loop.rs:10:11: 10:17
+    let mut _5: &str;                    // in scope 0 at while_loop.rs:10:11: 10:17
+    scope 1 {
+        scope 2 {
+            scope 3 {
+                scope 4 {
+                }
+            }
+        }
+    }
+
+    bb0: {
+        _3 = const "";                   // bb0[0]: scope 0 at while_loop.rs:10:11: 10:17
+                                         // ty::Const
+                                         // + ty: &str
+                                         // + val: Value(Slice { data: Allocation { bytes: [], relocations: Relocations(SortedMap { data: [] }), undef_mask: UndefMask { blocks: [], len: Size { raw: 0 } }, size: Size { raw: 0 }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 0 })
+                                         // mir::Constant
+                                         // + span: while_loop.rs:10:11: 10:17
+                                         // + literal: Const { ty: &str, val: Value(Slice { data: Allocation { bytes: [], relocations: Relocations(SortedMap { data: [] }), undef_mask: UndefMask { blocks: [], len: Size { raw: 0 } }, size: Size { raw: 0 }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 0 }) }
+        _2 = _3;                         // bb0[1]: scope 0 at while_loop.rs:10:11: 10:17
+        _5 = const "\n";                 // bb0[2]: scope 0 at while_loop.rs:10:11: 10:17
+                                         // ty::Const
+                                         // + ty: &str
+                                         // + val: Value(Slice { data: Allocation { bytes: [10], relocations: Relocations(SortedMap { data: [] }), undef_mask: UndefMask { blocks: [1], len: Size { raw: 1 } }, size: Size { raw: 1 }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 1 })
+                                         // mir::Constant
+                                         // + span: while_loop.rs:10:11: 10:17
+                                         // + literal: Const { ty: &str, val: Value(Slice { data: Allocation { bytes: [10], relocations: Relocations(SortedMap { data: [] }), undef_mask: UndefMask { blocks: [1], len: Size { raw: 1 } }, size: Size { raw: 1 }, align: Align { pow2: 0 }, mutability: Not, extra: () }, start: 0, end: 1 }) }
+        _4 = _5;                         // bb0[3]: scope 0 at while_loop.rs:10:11: 10:17
+        _1 = [move _2, move _4];         // bb0[4]: scope 0 at while_loop.rs:10:11: 10:17
+        _0 = &_1;                        // bb0[5]: scope 0 at while_loop.rs:10:11: 10:17
+        return;                          // bb0[6]: scope 0 at while_loop.rs:10:11: 10:17
+    }
+}
