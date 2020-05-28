@@ -2,7 +2,17 @@
     "binaries": [
         {
             "name": "add",
-            "command": "cxx/add 50000",
+            "command": "cxx/bin/add 500000",
+            "iterations": 100
+        },
+        {
+            "name": "pointer",
+            "command": "cxx/bin/pointer",
+            "iterations": 100
+        },
+        {
+            "name": "pointer_rs",
+            "command": "rs/bin/box_pointer",
             "iterations": 100
         }
     ]
