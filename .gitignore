@@ -3,3 +3,8 @@
 src/rust_codes/
 
 src/rs/bin/
+
+src/__pycache__/
+src/cxx/bin
+src/results.json
+
