@@ -1,10 +1,14 @@
 CXX = clang++
+BINDIR = bin
+SRC = $(wildcard *.cc)
+PROGS = $(patsubst %.cc, %, $(SRC))
 
-all: add
+all: $(PROGS)
 
-add: add.cc
-	$(CXX) -o $@ $^
+%: %.cc
+	$(CXX) $(CFLAGS) -o $(BINDIR)/$@ $^
+
 
 .PHONY: clean
 clean: 
-	rm -rf add
+	rm -rf $(BINDIR)/*
