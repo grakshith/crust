@@ -3,17 +3,27 @@
         {
             "name": "add",
             "command": "cxx/bin/add 500000",
-            "iterations": 100
+            "iterations": 10
         },
         {
             "name": "pointer",
             "command": "cxx/bin/pointer",
-            "iterations": 100
+            "iterations": 10
         },
         {
             "name": "pointer_rs",
             "command": "rs/bin/box_pointer",
-            "iterations": 100
+            "iterations": 10
+        },
+        {
+            "name": "list_rs",
+            "command": "rs/bin/linked_list",
+            "iterations": 1000
+        },
+        {
+            "name": "list_cxx",
+            "command": "cxx/bin/list",
+            "iterations": 1000
         }
     ]
 }
