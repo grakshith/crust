@@ -31,14 +31,10 @@ for experiment in json_data['binaries']:
         print("Iterations: {}".format(iter))
         args = experiment['command'].split()
         p = subprocess.Popen(args, stdout=subprocess.PIPE)
-        for line in p.stdout:
-            pass
         pid = p.pid
-        proc_stats = psutil.Process(pid)
-        cpu_time = proc_stats.cpu_times()
-        p.wait()
-        user_time = float(cpu_time.user)
-        sys_time = float(cpu_time.system)
+        cpid, status, rusage = os.wait4(pid, os.WUNTRACED)
+        user_time = float(rusage.ru_utime)
+        sys_time = float(rusage.ru_stime)
         measurement.append(user_time+sys_time)
         
     mean = statistics.mean(measurement)*10**6
