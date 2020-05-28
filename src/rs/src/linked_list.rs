@@ -27,11 +27,11 @@ impl List {
 
 fn main() {
 	let mut list = List::new();
-	for i in 0..10 {
+	for i in 0..10000 {
 		list.add(i);
 	}
 
-	println!("{:?}", list);
+	// println!("{:?}", list);
 
 	if list.head.is_some() {
 		let mut temp = &mut list.head;
@@ -41,5 +41,5 @@ fn main() {
 		temp.as_mut().unwrap().value = 10;
 	}
 
-	println!("{:?}", list);
+	// println!("{:?}", list);
 }
