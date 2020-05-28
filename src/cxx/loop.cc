@@ -2,8 +2,8 @@
 
 int main(){
 
-    #pragma clang loop unroll_count(100)
-    for(int i=0; i<10; i++){
+    #pragma clang loop unroll(enable)
+    for(std::size_t  i=0; i<10; ++i){
         std::cout<<"Hello"<<std::endl;
     }
 }
