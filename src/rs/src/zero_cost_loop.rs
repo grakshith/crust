@@ -10,7 +10,7 @@ fn main() {
 	let mut a = Vec::new();
 	let mut b = Vec::new();
 
-	for i in 1..=10000 {
+	for i in 1..=50000 {
 		a.push(i);
 		b.push(10000 - i);
 	}
@@ -24,9 +24,9 @@ fn main() {
 			numbers.push(product);
 		}
 
-		if numbers.len() == 4 {
-			break;
-		}
+		// if numbers.len() == 4 {
+		// 	break;
+		// }
 	}
 
 	println!("{:?}", numbers);

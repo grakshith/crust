@@ -8,7 +8,7 @@ fn main() {
 	let mut a = Vec::new();
 	let mut b = Vec::new();
 
-	for i in 1..=10000 {
+	for i in 1..=50000 {
 		a.push(i);
 		b.push(10000 - i);
 	}
@@ -17,7 +17,7 @@ fn main() {
 						.zip(b.iter())	// making a pair of (a, b)
 						.map(|(a, b)| a * b) // taking product of each element
 						.filter(|a| *a > 5000) // select only those elements that are greater than 20
-						.take(4) // select at most 4 elements
+						// .take(4) // select at most 4 elements
 						.collect::<Vec<_>>(); // the place where iteration finally happens
 											// and collect it as a vector
 
