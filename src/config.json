@@ -39,6 +39,17 @@
             "name": "print_rs",
             "command": "rs/bin/print",
             "iterations": 100
+        },
+        {
+            "name": "nbody",
+            "command": "cxx/bin/nbody 50000000",
+            "iterations": 10
+        },
+        {
+            "name": "nbody_rs",
+            "command": "rs/bin/nbody-7 50000000",
+            "iterations": 10
         }
+
     ]
 }
