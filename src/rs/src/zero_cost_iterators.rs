@@ -21,5 +21,5 @@ fn main() {
 						.collect::<Vec<_>>(); // the place where iteration finally happens
 											// and collect it as a vector
 
-	println!("{:?}", numbers);
+	println!("{:?}", numbers[0]);
 }
