@@ -27,6 +27,13 @@ class List{
 
 };
 
+void freeList(Node* head) {
+    if (head == NULL)
+        return;
+    freeList(head->next);
+    free(head);
+}
+
 
 int main(){
     List linked_list;
@@ -40,6 +47,9 @@ int main(){
     }
 
     tmp->value = 10;
+
+    freeList(linked_list.head);
+
 
     std::cout<<std::endl;
     
