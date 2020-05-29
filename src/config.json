@@ -8,12 +8,12 @@
         {
             "name": "pointer",
             "command": "cxx/bin/pointer",
-            "iterations": 10
+            "iterations": 1000
         },
         {
             "name": "pointer_rs",
             "command": "rs/bin/box_pointer",
-            "iterations": 10
+            "iterations": 1000
         },
         {
             "name": "list_rs",
