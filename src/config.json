@@ -18,12 +18,27 @@
         {
             "name": "list_rs",
             "command": "rs/bin/linked_list",
-            "iterations": 1000
+            "iterations": 10
         },
         {
             "name": "list_cxx",
             "command": "cxx/bin/list",
+            "iterations": 10
+        },
+        {
+            "name": "zero_cost_iterator_rs",
+            "command": "rs/bin/zero_cost_iterators",
             "iterations": 1000
+        },
+        {
+            "name": "zero_cost_loop_rs",
+            "command": "rs/bin/zero_cost_loop",
+            "iterations": 1000
+        },
+        {
+            "name": "print_rs",
+            "command": "rs/bin/print",
+            "iterations": 100
         }
     ]
 }
