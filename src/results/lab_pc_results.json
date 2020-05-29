@@ -1,0 +1,44 @@
+{
+    "results": [
+        {
+            "name": "add",
+            "iterations": 10,
+            "time_unit": "us",
+            "mean": 7909.9,
+            "median": 7966.5,
+            "stddev": 763.646289557905
+        },
+        {
+            "name": "pointer",
+            "iterations": 1000,
+            "time_unit": "us",
+            "mean": 1132.854,
+            "median": 1173.0,
+            "stddev": 104.7361749843403
+        },
+        {
+            "name": "pointer_rs",
+            "iterations": 1000,
+            "time_unit": "us",
+            "mean": 869.4849999999999,
+            "median": 868.0,
+            "stddev": 20.858303954153218
+        },
+        {
+            "name": "list_rs",
+            "iterations": 1000,
+            "time_unit": "us",
+            "mean": 2982.946,
+            "median": 2701.9999999999995,
+            "stddev": 797.5463731353188
+        },
+        {
+            "name": "list_cxx",
+            "iterations": 1000,
+            "time_unit": "us",
+            "mean": 2784.779,
+            "median": 2828.0,
+            "stddev": 926.1241742580447
+        }
+    ]
+}
