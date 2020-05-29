@@ -29,5 +29,5 @@ fn main() {
 		}
 	}
 
-	println!("{:?}", numbers[0]);
+	println!("{:?}", numbers);
 }

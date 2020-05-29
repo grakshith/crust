@@ -4,11 +4,10 @@
 #include <cmath>
 
 int main(){
-    std::vector<int> a,b;
+    std::vector<int> a;
 
     for(int i=1; i<=50000; i++){
         a.push_back(i);
-        b.push_back(10000-i);
     }
 
     std::vector<int> numbers;
