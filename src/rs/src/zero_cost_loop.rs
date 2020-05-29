@@ -24,9 +24,9 @@ fn main() {
 			numbers.push(product);
 		}
 
-		// if numbers.len() == 4 {
-		// 	break;
-		// }
+		if numbers.len() == 4 {
+			break;
+		}
 	}
 
 	println!("{:?}", numbers[0]);
