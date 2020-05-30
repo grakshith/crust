@@ -49,9 +49,16 @@ int main(){
 
     tmp->value = 10;
 
+    tmp = linked_list.head;
+    while(tmp->next){
+        tmp = tmp->next;
+    }
+
+    std::cout<<tmp->value<<std::endl;
+
     freeList(linked_list.head);
 
 
-    std::cout<<std::endl;
+    // std::cout<<std::endl;
     
 }

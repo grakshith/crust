@@ -48,6 +48,12 @@ fn main() {
 			temp = &mut (temp.as_mut().unwrap().next);
 		}
 		temp.as_mut().unwrap().value = 10;
+
+		let mut temp = &list.head;
+		while temp.as_ref().unwrap().next.is_some() {
+			temp = &(temp.as_ref().unwrap().next);
+		}
+		println!("{:?}", temp.as_ref().unwrap().value);
 	}
 
 	// println!("{:?}", list);
