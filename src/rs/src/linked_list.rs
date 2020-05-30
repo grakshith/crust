@@ -25,9 +25,18 @@ impl List {
 	}
 }
 
+impl Drop for List {
+    fn drop(&mut self) {
+        let mut cur_link = self.head.take();
+        while let Some(mut box_node) = cur_link {
+            cur_link = (*box_node).next.take();
+        }
+    }
+}
+
 fn main() {
 	let mut list = List::new();
-	for i in 0..10000 {
+	for i in 0..5000000 {
 		list.add(i);
 	}
 

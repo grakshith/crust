@@ -28,16 +28,17 @@ class List{
 };
 
 void freeList(Node* head) {
-    if (head == NULL)
-        return;
-    freeList(head->next);
-    free(head);
+    while (head != NULL) {
+	    Node* temp = head->next;
+	    free(head);
+	    head = temp;
+    }
 }
 
 
 int main(){
     List linked_list;
-    for(int i=0; i<10000; i++){
+    for(int i=0; i<5000000; i++){
         linked_list.add(i);
     }
 

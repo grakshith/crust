@@ -25,7 +25,7 @@ for experiment in json_data['binaries']:
             if(param=="BM_WORKLOAD_STR"):
                 workload = bm_utils.workload_gen(experiment['workload_size'])
                 params_list.append(workload)
-        
+    print(experiment['name']) 
     # run
     for iter in range(iterations):
         print("Iterations: {}".format(iter))
