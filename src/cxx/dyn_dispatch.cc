@@ -21,10 +21,18 @@ class InheritSample: public Sample{
     }
 };
 
+
+void generic(Sample &s){
+    s.dyn_dispatch(5);
+}
+
 int main(){
     Sample *s = new InheritSample();
 
     Sample ss;
+
+    generic(*s);
+    generic(ss);
 
     s->static_dispatch(5);
     s->dyn_dispatch(5);
