@@ -1,0 +1,148 @@
+{
+    "results": [
+        {
+            "name": "add",
+            "iterations": 10,
+            "time_unit": "us",
+            "mean": 6543.2,
+            "median": 6557.499999999999,
+            "stddev": 83.10609016324982
+        },
+        {
+            "name": "pointer",
+            "iterations": 1000,
+            "time_unit": "us",
+            "mean": 1720.447,
+            "median": 1720.0,
+            "stddev": 559.6704514312019
+        },
+        {
+            "name": "pointer_rs",
+            "iterations": 1000,
+            "time_unit": "us",
+            "mean": 568.958,
+            "median": 558.9999999999999,
+            "stddev": 30.984969006024585
+        },
+        {
+            "name": "list_rs",
+            "iterations": 100,
+            "time_unit": "us",
+            "mean": 196201.93,
+            "median": 201240.5,
+            "stddev": 6439.610224503913
+        },
+        {
+            "name": "list_unique_cxx",
+            "iterations": 100,
+            "time_unit": "us",
+            "mean": 190795.04,
+            "median": 194095.00000000003,
+            "stddev": 4397.8335183303025
+        },
+        {
+            "name": "list_raw_cxx",
+            "iterations": 100,
+            "time_unit": "us",
+            "mean": 184346.41999999998,
+            "median": 185450.0,
+            "stddev": 4342.158256773777
+        },
+        {
+            "name": "list_rs_unsafe",
+            "iterations": 100,
+            "time_unit": "us",
+            "mean": 182298.53,
+            "median": 180239.5,
+            "stddev": 4131.131853745445
+        },
+        {
+            "name": "weak_list_rs",
+            "iterations": 100,
+            "time_unit": "us",
+            "mean": 288039.69,
+            "median": 287141.0,
+            "stddev": 8440.419410919232
+        },
+        {
+            "name": "weak_list_cxx",
+            "iterations": 100,
+            "time_unit": "us",
+            "mean": 689301.87,
+            "median": 686485.0,
+            "stddev": 6442.18883948114
+        },
+        {
+            "name": "zero_cost_iterator_rs",
+            "iterations": 1000,
+            "time_unit": "us",
+            "mean": 1149.54,
+            "median": 1163.0,
+            "stddev": 72.262052311045
+        },
+        {
+            "name": "zero_cost_loop_rs",
+            "iterations": 1000,
+            "time_unit": "us",
+            "mean": 1364.6879999999999,
+            "median": 1392.0,
+            "stddev": 86.44466053687374
+        },
+        {
+            "name": "zero_cost_iterator_cxx",
+            "iterations": 1000,
+            "time_unit": "us",
+            "mean": 3532.8729999999996,
+            "median": 3776.0,
+            "stddev": 650.1326705837512
+        },
+        {
+            "name": "zero_cost_loop_cxx",
+            "iterations": 1000,
+            "time_unit": "us",
+            "mean": 2886.465,
+            "median": 3620.9999999999995,
+            "stddev": 1156.9674915707665
+        },
+        {
+            "name": "print_rs",
+            "iterations": 100,
+            "time_unit": "us",
+            "mean": 577.8399999999999,
+            "median": 567.5,
+            "stddev": 28.457915055269414
+        },
+        {
+            "name": "nbody",
+            "iterations": 10,
+            "time_unit": "us",
+            "mean": 834.0999999999999,
+            "median": 820.4999999999999,
+            "stddev": 33.6632011417677
+        },
+        {
+            "name": "nbody_rs",
+            "iterations": 10,
+            "time_unit": "us",
+            "mean": 610.1,
+            "median": 609.5,
+            "stddev": 8.723531395025757
+        },
+        {
+            "name": "mpsc_cxx",
+            "iterations": 10,
+            "time_unit": "us",
+            "mean": 289662.5,
+            "median": 288140.49999999994,
+            "stddev": 14032.149730371164
+        },
+        {
+            "name": "mpsc_rs",
+            "iterations": 10,
+            "time_unit": "us",
+            "mean": 140816.59999999998,
+            "median": 141002.00000000003,
+            "stddev": 3921.3204748740836
+        }
+    ]
+}
