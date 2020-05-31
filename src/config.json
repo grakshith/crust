@@ -25,6 +25,11 @@
             "command": "cxx/bin/list",
             "iterations": 100
         },
+	{
+            "name": "list_rs_unsafe",
+            "command": "rs/bin/linked_list_unsafe",
+            "iterations": 100
+        },
         {
             "name": "zero_cost_iterator_rs",
             "command": "rs/bin/zero_cost_iterators",

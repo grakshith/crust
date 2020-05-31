@@ -1,0 +1,108 @@
+{
+    "results": [
+        {
+            "name": "add",
+            "iterations": 10,
+            "time_unit": "us",
+            "mean": 7279.2,
+            "median": 7330.999999999999,
+            "stddev": 182.37434030038315
+        },
+        {
+            "name": "pointer",
+            "iterations": 1000,
+            "time_unit": "us",
+            "mean": 1411.168,
+            "median": 985.9999999999999,
+            "stddev": 536.321245387738
+        },
+        {
+            "name": "pointer_rs",
+            "iterations": 1000,
+            "time_unit": "us",
+            "mean": 679.0029999999999,
+            "median": 571.0,
+            "stddev": 367.0742329331813
+        },
+        {
+            "name": "list_rs",
+            "iterations": 100,
+            "time_unit": "us",
+            "mean": 199541.47,
+            "median": 202992.0,
+            "stddev": 5673.991245645041
+        },
+        {
+            "name": "list_cxx",
+            "iterations": 100,
+            "time_unit": "us",
+            "mean": 185933.09999999998,
+            "median": 188608.5,
+            "stddev": 3989.945389616406
+        },
+        {
+            "name": "list_rs_unsafe",
+            "iterations": 100,
+            "time_unit": "us",
+            "mean": 184834.3,
+            "median": 187755.5,
+            "stddev": 4146.893474017446
+        },
+        {
+            "name": "zero_cost_iterator_rs",
+            "iterations": 1000,
+            "time_unit": "us",
+            "mean": 3475.486,
+            "median": 3254.9999999999995,
+            "stddev": 431.39759119133436
+        },
+        {
+            "name": "zero_cost_loop_rs",
+            "iterations": 1000,
+            "time_unit": "us",
+            "mean": 3311.985,
+            "median": 3239.4999999999995,
+            "stddev": 171.59055945795822
+        },
+        {
+            "name": "zero_cost_iterator_cxx",
+            "iterations": 1000,
+            "time_unit": "us",
+            "mean": 3672.618,
+            "median": 3679.9999999999995,
+            "stddev": 766.8475997988892
+        },
+        {
+            "name": "zero_cost_loop_cxx",
+            "iterations": 1000,
+            "time_unit": "us",
+            "mean": 3570.874,
+            "median": 4224.5,
+            "stddev": 1029.1365673214602
+        },
+        {
+            "name": "print_rs",
+            "iterations": 100,
+            "time_unit": "us",
+            "mean": 697.97,
+            "median": 703.0,
+            "stddev": 24.501269808363443
+        },
+        {
+            "name": "nbody",
+            "iterations": 10,
+            "time_unit": "us",
+            "mean": 1046.7,
+            "median": 1037.4999999999998,
+            "stddev": 34.04588407167923
+        },
+        {
+            "name": "nbody_rs",
+            "iterations": 10,
+            "time_unit": "us",
+            "mean": 1138.9999999999998,
+            "median": 1137.5,
+            "stddev": 11.850925889754148
+        }
+    ]
+}
