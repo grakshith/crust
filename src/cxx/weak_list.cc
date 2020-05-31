@@ -46,16 +46,16 @@ int main(){
         linked_list.add(i);
     }
 
-    std::shared_ptr<Node> tmp = linked_list.head;
+    Node *tmp = linked_list.head.get();
     while(tmp->next){
-        tmp = tmp->next;
+        tmp = tmp->next.get();
     }
 
     tmp->value = 10;
 
-    tmp = linked_list.head;
+    tmp = linked_list.head.get();
     while(tmp->next){
-        tmp = tmp->next;
+        tmp = tmp->next.get();
     }
 
     std::cout<<tmp->value<<std::endl;
