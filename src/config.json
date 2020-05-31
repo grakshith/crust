@@ -36,6 +36,16 @@
             "iterations": 100
         },
         {
+            "name": "weak_list_rs",
+            "command": "rs/bin/weak_list",
+            "iterations": 100
+        },
+	{
+            "name": "weak_list_cxx",
+            "command": "cxx/bin/weak_list",
+            "iterations": 100
+        },
+        {
             "name": "zero_cost_iterator_rs",
             "command": "rs/bin/zero_cost_iterators",
             "iterations": 1000
