@@ -26,7 +26,7 @@ public:
 
     int remove(){
         std::unique_lock<std::mutex> locker(buffer_mutex);
-        if(cv.wait_for(locker, std::chrono::seconds(1),[this](){return buffer.size()>0;})){
+        if(cv.wait_for(locker, std::chrono::milliseconds(70),[this](){return buffer.size()>0;})){
             int num = buffer.front();
             buffer.pop_front();
             locker.unlock();
