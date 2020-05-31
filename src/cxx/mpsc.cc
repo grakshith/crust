@@ -26,12 +26,16 @@ public:
 
     int remove(){
         std::unique_lock<std::mutex> locker(buffer_mutex);
-        cv.wait(locker, [this](){return buffer.size()>0;});
-        int num = buffer.front();
-        buffer.pop_front();
-        locker.unlock();
-        cv.notify_all();
-        return num;
+        if(cv.wait_for(locker, std::chrono::seconds(1),[this](){return buffer.size()>0;})){
+            int num = buffer.front();
+            buffer.pop_front();
+            locker.unlock();
+            cv.notify_all();
+            return num;
+        }
+        else{
+            return -1;
+        }
     }
 };
 
@@ -47,7 +51,7 @@ public:
         
     }
     void run(){
-        while(true){
+        for(int i=0; i<100; i++){
             int num = std::rand() % 100;
             buffer.insert(num);
             cout_mutex.lock();
@@ -67,6 +71,9 @@ public:
     void run(){
         while(true){
             int num = buffer.remove();
+            if(num<0){
+                break;
+            }
             cout_mutex.lock();
             std::cout<<"Consumer consumed: "<<num<<"\n";
             cout_mutex.unlock();
