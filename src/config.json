@@ -21,11 +21,16 @@
             "iterations": 100
         },
         {
-            "name": "list_cxx",
+            "name": "list_unique_cxx",
+            "command": "cxx/bin/list_unique",
+            "iterations": 100
+        },
+        {
+            "name": "list_raw_cxx",
             "command": "cxx/bin/list",
             "iterations": 100
         },
-	{
+	    {
             "name": "list_rs_unsafe",
             "command": "rs/bin/linked_list_unsafe",
             "iterations": 100
@@ -40,7 +45,7 @@
             "command": "rs/bin/zero_cost_loop",
             "iterations": 1000
         },
-	{
+	    {
             "name": "zero_cost_iterator_cxx",
             "command": "cxx/bin/zero_cost_iterators",
             "iterations": 1000
@@ -64,7 +69,16 @@
             "name": "nbody_rs",
             "command": "rs/bin/nbody-7 50",
             "iterations": 10
+        },
+        {
+            "name": "mpsc_cxx",
+            "command": "cxx/bin/mpsc",
+            "iterations": 10
+        },
+        {
+            "name": "mpsc_rs",
+            "command": "rs/bin/mpsc",
+            "iterations": 10
         }
-
     ]
 }
