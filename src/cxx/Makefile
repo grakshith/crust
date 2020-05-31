@@ -2,7 +2,7 @@ CXX = clang++
 BINDIR = bin
 SRC = $(wildcard *.cc)
 PROGS = $(patsubst %.cc, %, $(SRC))
-CFLAGS = -pthread
+CFLAGS = -pthread -std=c++11
 
 all: $(PROGS)
 
