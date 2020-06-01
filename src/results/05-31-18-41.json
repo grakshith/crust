@@ -1,0 +1,164 @@
+{
+    "results": [
+        {
+            "name": "add",
+            "iterations": 10,
+            "time_unit": "us",
+            "mean": 6662.4,
+            "median": 6555.0,
+            "stddev": 272.4209161491745
+        },
+        {
+            "name": "pointer",
+            "iterations": 1000,
+            "time_unit": "us",
+            "mean": 984.1220000000001,
+            "median": 799.9999999999999,
+            "stddev": 341.81894814259385
+        },
+        {
+            "name": "pointer_rs",
+            "iterations": 1000,
+            "time_unit": "us",
+            "mean": 578.23,
+            "median": 572.0,
+            "stddev": 22.29489094304258
+        },
+        {
+            "name": "list_rs",
+            "iterations": 100,
+            "time_unit": "us",
+            "mean": 197249.54,
+            "median": 201830.49999999997,
+            "stddev": 6160.7307031198525
+        },
+        {
+            "name": "list_unique_cxx",
+            "iterations": 100,
+            "time_unit": "us",
+            "mean": 191832.81999999998,
+            "median": 194882.99999999997,
+            "stddev": 4196.773937493447
+        },
+        {
+            "name": "list_raw_cxx",
+            "iterations": 100,
+            "time_unit": "us",
+            "mean": 186215.84,
+            "median": 189161.49999999997,
+            "stddev": 4173.244818792176
+        },
+        {
+            "name": "list_rs_unsafe",
+            "iterations": 100,
+            "time_unit": "us",
+            "mean": 184833.16999999998,
+            "median": 187758.5,
+            "stddev": 4349.93997417078
+        },
+        {
+            "name": "weak_list_rs",
+            "iterations": 100,
+            "time_unit": "us",
+            "mean": 294698.55,
+            "median": 292773.49999999994,
+            "stddev": 11822.06761161669
+        },
+        {
+            "name": "weak_list_cxx",
+            "iterations": 100,
+            "time_unit": "us",
+            "mean": 657030.44,
+            "median": 651077.5,
+            "stddev": 13876.65612525532
+        },
+        {
+            "name": "zero_cost_iterator_rs",
+            "iterations": 1000,
+            "time_unit": "us",
+            "mean": 1269.859,
+            "median": 966.0,
+            "stddev": 399.9268665864018
+        },
+        {
+            "name": "zero_cost_loop_rs",
+            "iterations": 1000,
+            "time_unit": "us",
+            "mean": 2030.9859999999999,
+            "median": 2118.4999999999995,
+            "stddev": 210.254471407261
+        },
+        {
+            "name": "zero_cost_iterator_cxx",
+            "iterations": 1000,
+            "time_unit": "us",
+            "mean": 3368.9979999999996,
+            "median": 3485.0,
+            "stddev": 485.9860187355253
+        },
+        {
+            "name": "zero_cost_loop_cxx",
+            "iterations": 1000,
+            "time_unit": "us",
+            "mean": 3454.0,
+            "median": 3708.0,
+            "stddev": 769.1392859822213
+        },
+        {
+            "name": "print_rs",
+            "iterations": 100,
+            "time_unit": "us",
+            "mean": 1370.6599999999999,
+            "median": 1394.5,
+            "stddev": 116.22211580426591
+        },
+        {
+            "name": "nbody",
+            "iterations": 10,
+            "time_unit": "us",
+            "mean": 1199.4,
+            "median": 1188.5,
+            "stddev": 27.797681757857298
+        },
+        {
+            "name": "nbody_rs",
+            "iterations": 10,
+            "time_unit": "us",
+            "mean": 897.5999999999999,
+            "median": 891.4999999999999,
+            "stddev": 22.306949589757902
+        },
+        {
+            "name": "vector_copy_cxx",
+            "iterations": 1000,
+            "time_unit": "us",
+            "mean": 56616.292,
+            "median": 56547.5,
+            "stddev": 541.3376313976032
+        },
+        {
+            "name": "vector_move_cxx",
+            "iterations": 1000,
+            "time_unit": "us",
+            "mean": 56590.986,
+            "median": 56534.0,
+            "stddev": 377.52915658008203
+        },
+        {
+            "name": "vector_copy_rs",
+            "iterations": 1000,
+            "time_unit": "us",
+            "mean": 38495.583,
+            "median": 38445.99999999999,
+            "stddev": 266.3539290615525
+        },
+        {
+            "name": "vector_move_rs",
+            "iterations": 1000,
+            "time_unit": "us",
+            "mean": 24217.538,
+            "median": 24222.0,
+            "stddev": 146.1749009155048
+        }
+    ]
+}
