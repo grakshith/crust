@@ -8,6 +8,7 @@ import subprocess
 import psutil
 import sys
 import resource
+import datetime
 
 with open('config.json') as json_file:
     json_data = json.load(json_file)
@@ -55,6 +56,7 @@ for experiment in json_data['binaries']:
     # append it to the results json object
     result_json['results'].append(result)
 
-with open('results.json', 'w') as json_file:
+timestamp = str(datetime.datetime.now()).split('.')[0].replace(' ', '_')
+with open('results/results-{}.json'.format(timestamp), 'w') as json_file:
     json_file.write(json.dumps(result_json, indent=4))
 
