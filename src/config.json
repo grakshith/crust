@@ -89,6 +89,26 @@
             "name": "mpsc_rs",
             "command": "rs/bin/mpsc",
             "iterations": 10
+        },
+        {
+            "name": "vector_copy_cxx",
+            "command": "cxx/bin/vector_copy",
+            "iterations": 1000
+        },
+        {
+            "name": "vector_move_cxx",
+            "command": "cxx/bin/vector_copy",
+            "iterations": 1000
+        },
+        {
+            "name": "vector_copy_rs",
+            "command": "rs/bin/copy_vec",
+            "iterations": 1000
+        },
+        {
+            "name": "vector_move_rs",
+            "command": "rs/bin/move_vec",
+            "iterations": 1000
         }
     ]
 }
