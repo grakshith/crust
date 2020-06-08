@@ -14,11 +14,11 @@ fn main() {
 	}
 
 	let numbers = a.iter()	// creating an iterator from a
-						.zip(b.iter())	// making a pair of (a, b)
-						.map(|(a, b)| a * b) // taking product of each element
-						.filter(|a| *a > 5000) // select only those elements that are greater than 20
-						.take(4) // select at most 4 elements
-						.collect::<Vec<_>>(); // the place where iteration finally happens
+			.zip(b.iter())	// making a pair of (a, b)
+			.map(|(a, b)| a * b) // taking product of each element
+			.filter(|a| *a > 5000) // select only those elements that are greater than 5000
+			.take(4) // select at most 4 elements
+			.collect::<Vec<_>>(); // the place where iteration finally happens
 											// and collect it as a vector
 
 	println!("{:?}", numbers);
