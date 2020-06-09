@@ -1,21 +1,33 @@
 # crust
 
-## Objective
-Comparison of features Rust and C++ as a systems programming language and try to provide which language will be suitable for which usecase.
-* Comparison
-  * Performance of systems programming language
-      * Look at the specific features that each language has to offer and compare their influence on the performance numbers.
-      * Will try to write programs with features missing(or present) and check how the time and other metrics behave.
-      * Can find micro benchmaarks and try to verify our results.
-  * Memory safety/management in C++ vs. Rust
-      * Try to find the answer of how each language provides(or fails to provide) Memory Safety and the cost involved.
-      * Write some unsafe codes and then check for memory leaks.
-  * Concurrency in C++ vs. Rust
- 	  * Rust claims to provide strong support for concurrency. Try to find out how Rust is able to do it and how much better(or worse) its claim is as compared the concurrency support in C++.
- 	  * Will write multi threaded programs and measure certain meterics for performance.
- 	  * Will also check data races and other memory issues by testing more concurrent programs.
+## About
+A small project to compare different features of Rust and C++ as a systems programming language.
 
-## Motivation
-* Try to answer as to why Rust is gaining popularity as systems programming language
-* How does Rust compare with very matured languages like C/C++
-* Memory safety and Concurrency claims made by Rust
+## Instructions to Compile
+### Rust installation
+`rustc` is the compiler that is used. To install Rust on a Unix-like OS run the following command
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+For all the ways to install rust please visit this site: https://www.rust-lang.org/tools/install
+### Code Compilation
+#### Rust
+All the Rust implementations are present in the directory [src/rs/src](https://github.com/grakshith/crust/tree/master/src/rs/src). Run the following instructions to go to that directory from the root of this project and compile all the Rust codes
+```bash
+cd src/rs/src
+./compile.sh
+```
+This will compile all the Rust src and put the executables in the directory [src/rs/bin](https://github.com/grakshith/crust/tree/master/src/rs/bin) (path wrt project root)
+```bash
+cd ../bin
+```
+#### C++
+All the C++ src files are present in the directory [src/cxx](https://github.com/grakshith/crust/tree/master/src/cxx). Run the following instructions to go to that directory from the root of this project and compile all the C++ codes
+```bash
+cd src/cxx
+make
+```
+This will compile all the C++ src and put the executables in the directory src/cxx/bin (path wrt project root)
+```bash
+cd bin
+```
