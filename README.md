@@ -32,7 +32,7 @@ This will compile all the C++ src and put the executables in the directory src/c
 cd bin
 ```
 ## Instructions to benchmark
-The [benchmark.py](https://github.com/grakshith/crust/tree/master/src/benchmark.py) in the `src` directory, contains the Python script which runs the all the executables. It uses the `config.json` as a guide to run which executables. After it runs it stores the output in the file called `results.json` in the same directory.
+The [benchmark.py](https://github.com/grakshith/crust/tree/master/src/benchmark.py) in the `src` directory, contains the Python script which runs the all the executables. It uses the `config.json` as a guide to run which executables. After it runs it stores the output in the file called `results-{date}_{time}.json` in the directory [src/results](https://github.com/grakshith/crust/tree/master/src/results) (path wrt to project root).
 
 ### config.json
 Edit the [config.json](https://github.com/grakshith/crust/tree/master/src/config.json) inside the src folder as follows.
@@ -62,7 +62,7 @@ We used Python 3.5 version of Python. To run the benchmark simply run the follow
 ```bash
 python benchmark.py
 ```
-After executing all the binaries the result will be stored in the `results.json` file. The `results.json` has the following structure
+After executing all the binaries the result will be stored in the `results-{date}_{time}.json` file. It has the following structure
 ```JavaScript
 {
     "results": [
@@ -79,3 +79,12 @@ After executing all the binaries the result will be stored in the `results.json`
     ]
 }
 ```
+
+### Requirements
+Tested on a new anaconda environment with Python 3.5, the only required package was `psutil`. Run the following command to install this requirement
+```bash
+pip install -r requirements.txt
+# or simply
+pip install psutil
+```
+If it shows any other dependency required just install them using `pip`
