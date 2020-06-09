@@ -31,3 +31,51 @@ This will compile all the C++ src and put the executables in the directory src/c
 ```bash
 cd bin
 ```
+## Instructions to benchmark
+The [benchmark.py](https://github.com/grakshith/crust/tree/master/src/benchmark.py) in the `src` directory, contains the Python script which runs the all the executables. It uses the `config.json` as a guide to run which executables. After it runs it stores the output in the file called `results.json` in the same directory.
+
+### config.json
+Edit the [config.json](https://github.com/grakshith/crust/tree/master/src/config.json) inside the src folder as follows.
+
+To add an executable to compare with the others add an object like the following
+```JavaScript
+{
+    "binaries": [
+    {...},
+    {
+        "name": "An easy name to identify in the result.json",
+        "command": "Location of the binary along with its argument like how you would run from the terminal",
+        "iterations": 10 //An integer value specifying the number of times the code will be run
+    },
+    {
+        "name": "Linked list in Rust",
+        "command": "rs/bin/linked_list",
+        "iterations": 100
+    }
+    {...}
+    ]
+}
+```
+
+### Running the benchmark
+We used Python 3.5 version of Python. To run the benchmark simply run the following command
+```bash
+python benchmark.py
+```
+After executing all the binaries the result will be stored in the `results.json` file. The `results.json` has the following structure
+```JavaScript
+{
+    "results": [
+    {...},
+    {
+        "name": "The same you used in config.json",
+        "iterations": 100, // An integer specifying the number of times the code was run
+        "time_unit": "us", // Represents micro-seconds
+        "mean": 1234.56, // mean time taken by the executable across all the runs
+        "median": 1234.56, // the median of all the times taken by the executable
+        "stddiv": 123.56 // the standard deviation of execution times across all the runs
+    }
+    {...}
+    ]
+}
+```
